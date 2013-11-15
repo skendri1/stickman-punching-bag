@@ -1,30 +1,33 @@
 package edu.westga.stephenkendrick.stickmanpunchingbag;
 
+import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
+
+/**
+ * Main Menu Activity
+ * @author stephenkendrick
+ */
 public class MainMenuActivity extends Activity {
 
 	private static final String LOG_TAG = "MainMenuActivity";
 
-	private Button timeTrialButton;
-	private Button highScoresButton;
-	private Button settingsButton;
+	private MainMenuActivityThemeChanger data; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.i(LOG_TAG, "onCreate");
 
 		super.onCreate(savedInstanceState);
+		
 		setTheme(R.style.darkTheme);
 		setContentView(R.layout.activity_main_menu);
 
-		this.setButtonVariables();
+		this.data = new MainMenuActivityThemeChanger(this);
 
 	}
 
@@ -35,80 +38,51 @@ public class MainMenuActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
-
-	private void setButtonVariables() {
-		this.timeTrialButton = (Button) findViewById(R.id.timeTrialButton);
-		this.highScoresButton = (Button) findViewById(R.id.highScoresButton);
-		this.settingsButton = (Button) findViewById(R.id.settingsButton);
-	}
-
+	
+	/**
+	 * Handles the Time Trial Button Click
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: none 
+	 * 
+	 * @param view
+	 */
 	public void onTimeTrialButtonClick(View view) {
 		Log.i(LOG_TAG, "onTimeTrialButtonClick");
 
-		changeThemeToLight();
+		this.data.changeThemeToLight();
 	}
 
+	/**
+	 * Handles the High Scores button click
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: none
+	 * 
+	 * @param view
+	 */
 	public void onHighScoresButtonClick(View view) {
-		Log.i(LOG_TAG, "onTimeTrialButtonClick");
+		Log.i(LOG_TAG, "onHighScoresButtonClick");
 
-		changeThemeToPink();
+		this.data.changeThemeToPink();
 	}
 
+	/**
+	 * Handles the Settings button click
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: none
+	 * 
+	 * @param view
+	 */
 	public void onSettingsButtonClick(View view) {
-		Log.i(LOG_TAG, "onTimeTrialButtonClick");
+		Log.i(LOG_TAG, "onSettingsButtonClick");
 
-		changeThemeToDark();
+		this.data.changeThemeToDark();
 	}
 
-	private void changeThemeToLight() {
-		Log.i(LOG_TAG, "changeThemeToLight");
-
-		setTheme(R.style.lightTheme);
-		setContentView(R.layout.activity_main_menu);
-		this.setButtonVariables();
-
-		this.timeTrialButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
-		this.highScoresButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
-		this.settingsButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
-
-		Toast.makeText(this, "Change Theme To Light", Toast.LENGTH_LONG).show();
-	}
-
-	private void changeThemeToPink() {
-		Log.i(LOG_TAG, "changeThemeToPink");
-
-		setTheme(R.style.pinkTheme);
-		setContentView(R.layout.activity_main_menu);
-		this.setButtonVariables();
-
-		this.timeTrialButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
-		this.highScoresButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
-		this.settingsButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
-
-		Toast.makeText(this, "Change Theme To Pink", Toast.LENGTH_LONG).show();
-	}
-
-	private void changeThemeToDark() {
-		Log.i(LOG_TAG, "changeThemeToDark");
-
-		setTheme(R.style.darkTheme);
-		setContentView(R.layout.activity_main_menu);
-		this.setButtonVariables();
-
-		this.timeTrialButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
-		this.highScoresButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
-		this.settingsButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
-
-		Toast.makeText(this, "Change Theme To Dark", Toast.LENGTH_LONG).show();
-	}
 
 }
