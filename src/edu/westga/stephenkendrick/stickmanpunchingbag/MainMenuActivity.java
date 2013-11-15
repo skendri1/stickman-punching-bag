@@ -4,6 +4,7 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivit
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
@@ -54,7 +55,7 @@ public class MainMenuActivity extends Activity {
 		Log.i(LOG_TAG, "loadPreferences");
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString(MainMenuActivityThemeChanger.THEME, MainMenuActivityThemeChanger.DARK_THEME);
+		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
 		
 		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 			
@@ -116,10 +117,28 @@ public class MainMenuActivity extends Activity {
 	 */
 	public void onSettingsButtonClick(View view) {
 		Log.i(LOG_TAG, "onSettingsButtonClick");
+		
+		startActivityForResult(new Intent(this, SettingsActivity.class), 0);
 
-		this.theme.changeThemeToDark();
-		this.savePreferences();
-		this.finish();
+		
+//		Intent intent = new Intent(MainMenuActivity.this, SettingsActivity.class);
+//		MainMenuActivity.this.startActivity(intent);
+
+//		this.theme.changeThemeToDark();
+//		this.savePreferences();
+//		this.finish();
 	}
+	
+	@Override
+	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	  // TODO Auto-generated method stub
+	  //super.onActivityResult(requestCode, resultCode, data);
+	  
+	  /*
+	   * To make it simple, always re-load Preference setting.
+	   */
+	  
+	  this.loadPreferences();
+	 }
 
 }
