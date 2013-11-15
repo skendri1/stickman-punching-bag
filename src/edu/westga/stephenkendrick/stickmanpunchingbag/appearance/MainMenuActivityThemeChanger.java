@@ -24,6 +24,7 @@ public class MainMenuActivityThemeChanger {
 	
 	private String currentTheme;
 
+	public static final String THEME = "theme";
 	public static final String DARK_THEME = "dark";
 	public static final String LIGHT_THEME = "light";
 	public static final String PINK_THEME = "pink";
