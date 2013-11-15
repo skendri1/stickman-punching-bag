@@ -4,5 +4,11 @@
     <string name="app_name">StickmanPunchingBag</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    <string name="image_description">Main Menu Logo of Stickman Punchingbag</string>
 
+    <string name="time_trial_button">Time Trial</string>
+    <string name="high_scores_button">High Scores</string>
+    <string name="settings_button">Settings</string>
+    
 </resources>
