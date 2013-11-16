@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 /**
@@ -37,9 +38,19 @@ public class MainMenuActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		Log.i(LOG_TAG, "onCreateOptionsMenu");
-		getMenuInflater().inflate(R.menu.main_menu, menu);
-		return true;
+		menu.add(Menu.NONE, 0, 0, "Settings");
+		return super.onCreateOptionsMenu(menu);
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 0:
+                startActivityForResult(new Intent(this, SettingsActivity.class), 0);
+                return true;
+        }
+        return false;
+    }
 
 	private void savePreferences() {
 		Log.i(LOG_TAG, "savePreferences");

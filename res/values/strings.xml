@@ -10,9 +10,15 @@
     <string name="settings_button">Settings</string>
 
     <string-array name="theme_array">
-        <item name="Dark">Dark</item>
-        <item name="Light">Light</item>
-        <item name="Pink">Pink</item>
+        <item >Dark</item>
+        <item >Light</item>
+        <item >Pink</item>
+    </string-array>
+    
+    <string-array name="theme_array_values">
+        <item >Dark</item>
+        <item >Light</item>
+        <item >Pink</item>
     </string-array>
     
     <string-array name="settings_push_delay_human_value">

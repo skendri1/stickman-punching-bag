@@ -27,7 +27,8 @@
          <activity
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.SettingsActivity"
             android:label="@string/app_name" 
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/lightTheme">
         </activity>
         
     </application>
