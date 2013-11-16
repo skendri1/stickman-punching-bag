@@ -101,8 +101,8 @@ public class HighScoresActivity extends Activity implements
 //		Log.i(LOG_TAG, "addHighScore");
 //		
 //		ContentValues values = new ContentValues();
-//		values.put(HighScores.PLAYER_NAME, "test");
-//		values.put(HighScores.NUMBER_OF_TAPS, 20);
+//		values.put(HighScores.PLAYER_NAME, "Highest Score");
+//		values.put(HighScores.NUMBER_OF_TAPS, 35);
 //
 //		getContentResolver().insert(HighScoresContentProviderDB.CONTENT_URI,
 //				values);
@@ -156,21 +156,6 @@ public class HighScoresActivity extends Activity implements
 	private void setupListAdapter() {
 
 		Log.i(LOG_TAG, "setuplistAdapter");
-		
-		// String[] dataColumns = new String[] { HighScores.PLAYER_NAME,
-		// HighScores.NUMBER_OF_TAPS };
-		//
-		// // int[] viewIDs = new int[] { R.id.playerNameTextView,
-		// // R.id.numberOfPunchesTextView };
-		//
-		// getLoaderManager().initLoader(0, null, this);
-		// this.adapter = new SimpleCursorAdapter(this, (Integer) null, null,
-		// dataColumns, null, 0);
-		//
-		// setListAdapter(this.adapter);
-		//
-		// ListView lv = getListView();
-		// registerForContextMenu(lv);
 
 		HighScoresDBAdapter dbAdapter = new HighScoresDBAdapter(this);
 		Cursor cursor = null;
