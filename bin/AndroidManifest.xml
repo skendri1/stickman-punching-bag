@@ -24,13 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
-            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.SettingsActivity"
-            android:label="@string/app_name" 
+        <activity
+            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.settings.SettingsActivity"
+            android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@style/lightTheme">
+            android:theme="@style/lightTheme" >
         </activity>
-        
+        <activity
+            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.HighScoresActivity"
+            android:label="@string/title_activity_high_scores" 
+            android:screenOrientation="landscape">
+        </activity>
     </application>
 
 </manifest>

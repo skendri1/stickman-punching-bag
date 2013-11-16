@@ -1,8 +1,10 @@
 /**
  * 
  */
-package edu.westga.stephenkendrick.stickmanpunchingbag;
+package edu.westga.stephenkendrick.stickmanpunchingbag.settings;
 
+import edu.westga.stephenkendrick.stickmanpunchingbag.R;
+import edu.westga.stephenkendrick.stickmanpunchingbag.R.xml;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 

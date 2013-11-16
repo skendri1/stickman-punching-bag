@@ -1,6 +1,7 @@
 package edu.westga.stephenkendrick.stickmanpunchingbag;
 
 import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
+import edu.westga.stephenkendrick.stickmanpunchingbag.settings.SettingsActivity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Main Menu Activity
@@ -52,15 +54,15 @@ public class MainMenuActivity extends Activity {
         return false;
     }
 
-	private void savePreferences() {
-		Log.i(LOG_TAG, "savePreferences");
-		
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		
-		Editor editor = preferences.edit();
-		editor.putString(MainMenuActivityThemeChanger.THEME, this.theme.getCurrentTheme());
-		editor.commit();
-	}
+//	private void savePreferences() {
+//		Log.i(LOG_TAG, "savePreferences");
+//		
+//		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//		
+//		Editor editor = preferences.edit();
+//		editor.putString(MainMenuActivityThemeChanger.THEME, this.theme.getCurrentTheme());
+//		editor.commit();
+//	}
 
 	private void loadPreferences() {
 		Log.i(LOG_TAG, "loadPreferences");
@@ -94,10 +96,8 @@ public class MainMenuActivity extends Activity {
 	 */
 	public void onTimeTrialButtonClick(View view) {
 		Log.i(LOG_TAG, "onTimeTrialButtonClick");
-
-		this.theme.changeThemeToLight();
-		this.savePreferences();
-		this.finish();
+		
+		
 	}
 
 	/**
@@ -112,9 +112,7 @@ public class MainMenuActivity extends Activity {
 	public void onHighScoresButtonClick(View view) {
 		Log.i(LOG_TAG, "onHighScoresButtonClick");
 
-		this.theme.changeThemeToPink();
-		this.savePreferences();
-		this.finish();
+		startActivityForResult(new Intent(this, HighScoresActivity.class), 0);
 	}
 
 	/**
@@ -131,25 +129,11 @@ public class MainMenuActivity extends Activity {
 		
 		startActivityForResult(new Intent(this, SettingsActivity.class), 0);
 
-		
-//		Intent intent = new Intent(MainMenuActivity.this, SettingsActivity.class);
-//		MainMenuActivity.this.startActivity(intent);
-
-//		this.theme.changeThemeToDark();
-//		this.savePreferences();
-//		this.finish();
 	}
 	
 	@Override
 	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-	  // TODO Auto-generated method stub
-	  //super.onActivityResult(requestCode, resultCode, data);
-	  
-	  /*
-	   * To make it simple, always re-load Preference setting.
-	   */
-	  
-	  this.loadPreferences();
+		this.loadPreferences();
 	 }
 
 }

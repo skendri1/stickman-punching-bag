@@ -1,7 +1,7 @@
 /**
  * 
  */
-package edu.westga.stephenkendrick.stickmanpunchingbag;
+package edu.westga.stephenkendrick.stickmanpunchingbag.settings;
 
 import android.app.Activity;
 import android.os.Bundle;

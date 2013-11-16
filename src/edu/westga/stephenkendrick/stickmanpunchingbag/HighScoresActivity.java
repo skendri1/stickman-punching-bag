@@ -1,0 +1,176 @@
+package edu.westga.stephenkendrick.stickmanpunchingbag;
+
+import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContentProviderDB;
+import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContract.HighScores;
+import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.app.Activity;
+import android.app.ListActivity;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.ContentValues;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+/**
+ * 
+ * @author stephenkendrick
+ *
+ */
+public class HighScoresActivity extends ListActivity implements LoaderCallbacks<Cursor> {
+
+	private static final String LOG_TAG = "HighScoresActivity";
+	
+	private SimpleCursorAdapter adapter;
+	private static final String[] HIGHSCORES_PROJECTION = new String[] { HighScores.ID, HighScores.PLAYER_NAME, HighScores.NUMBER_OF_TAPS };
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		Log.i(LOG_TAG,"onCreate");
+		
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_high_scores);
+		
+		this.loadPreferences();
+		this.addHighScore();
+		this.setupListAdapter();
+	}
+	
+	private void loadPreferences() {
+		Log.i(LOG_TAG, "loadPreferences");
+		
+		Button mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
+		
+		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+			
+			mainMenuButton.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
+			
+			this.setTheme(R.style.pinkTheme);
+			this.setContentView(R.layout.activity_high_scores);
+			
+			this.convertTextViewTextColor(Color.BLACK);
+			
+			
+		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+			
+			mainMenuButton.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
+			
+			this.setTheme(R.style.lightTheme);
+			this.setContentView(R.layout.activity_high_scores);
+			
+			this.convertTextViewTextColor(Color.BLACK);
+			
+		} else {
+			
+			mainMenuButton.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
+			
+			this.setTheme(R.style.darkTheme);
+			this.setContentView(R.layout.activity_high_scores);
+			
+			this.convertTextViewTextColor(Color.WHITE);
+			
+		}
+	}
+	
+	private void addHighScore() {
+		ContentValues values = new ContentValues();
+		values.put(HighScores.PLAYER_NAME, "test");
+		values.put(HighScores.NUMBER_OF_TAPS, 20);
+		
+		getContentResolver().insert(HighScoresContentProviderDB.CONTENT_URI, values);
+	}
+	
+	private void convertTextViewTextColor(int color) {
+		
+		TextView highScoresTitleTextView = (TextView) findViewById(R.id.highScoresTitleTextView);
+		
+		TextView nameColTextView = (TextView) findViewById(R.id.nameColTextView);
+		TextView numberOfPunchesColTextView = (TextView) findViewById(R.id.numberOfPunchesColTextView);
+		
+		TextView nameTextView = (TextView) findViewById(R.id.playerNameTextView);
+		TextView numberOfPunchesTextView = (TextView) findViewById(R.id.numberOfPunchesTextView);
+		
+		highScoresTitleTextView.setTextColor(color);
+		
+		nameColTextView.setTextColor(color);
+		numberOfPunchesColTextView.setTextColor(color);
+		
+		nameTextView.setTextColor(color);
+		numberOfPunchesTextView.setTextColor(color);
+		
+	}
+	
+	private void setupListAdapter() {
+
+		String[] dataColumns = new String[] { HighScores.PLAYER_NAME, 
+				HighScores.NUMBER_OF_TAPS };
+		
+		int[] viewIDs = new int[] { R.id.playerNameTextView, 
+				R.id.numberOfPunchesTextView };
+		
+		getLoaderManager().initLoader(0, null, this);
+		this.adapter = new SimpleCursorAdapter(this, R.layout.activity_high_scores, null,
+				dataColumns, viewIDs, 0);
+		
+		setListAdapter(this.adapter);
+		
+		ListView lv = getListView();
+		registerForContextMenu(lv);
+		
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		Log.i(LOG_TAG,"onCreateOptionsMenu");
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.high_scores, menu);
+		return true;
+	}
+	
+	/**
+	 * handles the main menu button click
+	 * @param view
+	 */
+	public void onMainMenuButtonClick(View view){
+		this.finish();
+	}
+
+	@Override
+	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+		Log.i(LOG_TAG,"onCreateLoader");
+		
+		return new CursorLoader(HighScoresActivity.this, 
+				HighScoresContentProviderDB.CONTENT_URI,
+				HIGHSCORES_PROJECTION,
+				null,null,null);
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+		Log.i(LOG_TAG,"onCreateFinished");
+		
+		this.adapter.swapCursor(cursor);
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+		Log.i(LOG_TAG,"onLoaderReset");
+		
+		this.adapter.swapCursor(null);
+	}
+
+}
