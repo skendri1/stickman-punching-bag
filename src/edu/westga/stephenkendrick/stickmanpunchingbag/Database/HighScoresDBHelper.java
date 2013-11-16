@@ -22,7 +22,7 @@ public class HighScoresDBHelper extends SQLiteOpenHelper{
 
 	private static final String COMMA_SEP = ", ";
 	private static final String TEXT_TYPE = " TEXT";
-	private static final String INTEGER_TYPE = "INTEGER";
+	private static final String INTEGER_TYPE = " INTEGER";
 	
 	private static final String SQL_CREATE_DATABASE = "CREATE TABLE "
 			+ HighScores.HIGH_SCORES_TABLE_NAME + " (" + HighScores.ID

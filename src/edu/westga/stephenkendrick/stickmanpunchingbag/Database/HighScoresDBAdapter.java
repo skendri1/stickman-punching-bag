@@ -18,6 +18,8 @@ private static final String LOG_TAG = "HighScoresDBAdapter";
 	private SQLiteDatabase theDB = null; 
 	private Context context = null; 
 
+	//private int currentLowestScore;
+	
 	/**
 	 * Creates the HighScoresDBAdapter class with the given context
 	 * <p>
@@ -149,7 +151,7 @@ private static final String LOG_TAG = "HighScoresDBAdapter";
 		Log.i(LOG_TAG, "fetchAllHighScores");
 		
 		String[] highScoreColumns = new String[] { HighScores.ID, HighScores.PLAYER_NAME, HighScores.NUMBER_OF_TAPS };
-		return this.theDB.query(HighScores.HIGH_SCORES_TABLE_NAME, highScoreColumns, null, null, null, null, null);
+		return this.theDB.query(HighScores.HIGH_SCORES_TABLE_NAME, highScoreColumns, null, null, null, null, null);//HighScores.NUMBER_OF_TAPS+" DESC");
 
 	}
 	
