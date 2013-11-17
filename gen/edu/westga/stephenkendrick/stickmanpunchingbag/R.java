@@ -9,8 +9,6 @@ package edu.westga.stephenkendrick.stickmanpunchingbag;
 
 public final class R {
     public static final class array {
-        public static final int settings_push_delay_human_value=0x7f070002;
-        public static final int settings_push_delay_phone_value=0x7f070003;
         public static final int theme_array=0x7f070000;
         public static final int theme_array_values=0x7f070001;
     }
@@ -68,10 +66,12 @@ public final class R {
     public static final class layout {
         public static final int activity_high_scores=0x7f030000;
         public static final int activity_main_menu=0x7f030001;
+        public static final int activity_time_trial=0x7f030002;
     }
     public static final class menu {
         public static final int high_scores=0x7f090000;
         public static final int main_menu=0x7f090001;
+        public static final int time_trial=0x7f090002;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -85,6 +85,7 @@ public final class R {
         public static final int settings_button=0x7f060007;
         public static final int time_trial_button=0x7f060005;
         public static final int title_activity_high_scores=0x7f06000a;
+        public static final int title_activity_time_trial=0x7f06000b;
     }
     public static final class style {
         /** 

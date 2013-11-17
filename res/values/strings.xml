@@ -22,17 +22,8 @@
         <item>Light</item>
         <item>Pink</item>
     </string-array>
-    <string-array name="settings_push_delay_human_value">
-        <item>every 5 minutes</item>
-        <item>every 10 minutes</item>
-        <item>every 15 minutes</item>
-    </string-array>
-    <string-array name="settings_push_delay_phone_value">
-        <item>300</item>
-        <item>600</item>
-        <item>900</item>
-    </string-array>
 
     <string name="title_activity_high_scores">HighScoresActivity</string>
+    <string name="title_activity_time_trial">TimeTrialActivity</string>
 
 </resources>
