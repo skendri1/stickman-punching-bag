@@ -33,6 +33,15 @@
             android:paddingRight="10sp"
             android:text="@string/high_scores_button" >
         </TextView>
+
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/clear" 
+            android:onClick="onClearButtonClick"/>
+
     </LinearLayout>
 
     <LinearLayout

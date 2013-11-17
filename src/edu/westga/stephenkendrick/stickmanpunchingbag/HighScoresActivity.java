@@ -48,7 +48,6 @@ public class HighScoresActivity extends Activity implements
 		setContentView(R.layout.activity_high_scores);
 
 		this.loadPreferences();
-//		this.addHighScore();
 		this.setupListAdapter();
 	}
 
@@ -96,17 +95,6 @@ public class HighScoresActivity extends Activity implements
 
 		}
 	}
-
-//	private void addHighScore() {
-//		Log.i(LOG_TAG, "addHighScore");
-//		
-//		ContentValues values = new ContentValues();
-//		values.put(HighScores.PLAYER_NAME, "Highest Score");
-//		values.put(HighScores.NUMBER_OF_TAPS, 35);
-//
-//		getContentResolver().insert(HighScoresContentProviderDB.CONTENT_URI,
-//				values);
-//	}
 
 	private void convertTextViewTextColor(int color) {
 		Log.i(LOG_TAG, "convertTextViewTextColor");
@@ -187,6 +175,8 @@ public class HighScoresActivity extends Activity implements
 		if (cursor != null) {
 			cursor.close();
 		}
+		
+		dbAdapter.close();
 
 	}
 
@@ -286,6 +276,27 @@ public class HighScoresActivity extends Activity implements
 	public void onMainMenuButtonClick(View view) {
 		Log.i(LOG_TAG, "onMainMenuButtonClick");
 		this.finish();
+	}
+	
+	public void onClearButtonClick(View view) {
+		Log.i(LOG_TAG, "onClearButtonClick");
+		
+		boolean allScoresDeleted = false;
+		
+		HighScoresDBAdapter dbAdapter = new HighScoresDBAdapter(this);
+		try {
+			dbAdapter.open();
+			
+			allScoresDeleted = dbAdapter.deleteAllHighScores();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbAdapter.close();
+		
+		if(allScoresDeleted) {
+			finish();
+		}
 	}
 
 	@Override

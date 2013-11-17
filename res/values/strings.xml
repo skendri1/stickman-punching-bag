@@ -13,6 +13,7 @@
     <string name="number_of_punches_default">Number of Punches</string>
     <string name="timer_default">Timer</string>
     <string name="punch_button">Punch</string>
+    <string name="clear">Clear</string>
     
     <string name="player_name_dialog_title">New High Score\nWhat is your name?</string>
     
