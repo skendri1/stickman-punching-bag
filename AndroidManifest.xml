@@ -42,7 +42,8 @@
         </activity>
         <activity
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.TimeTrialActivity"
-            android:label="@string/title_activity_time_trial" >
+            android:label="@string/title_activity_time_trial" 
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

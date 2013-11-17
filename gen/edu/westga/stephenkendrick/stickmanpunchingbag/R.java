@@ -72,8 +72,8 @@ public final class R {
         public static final int punchingBagImageView=0x7f0a001f;
         public static final int settingsButton=0x7f0a001a;
         public static final int stickmanAnimationView=0x7f0a001e;
-        public static final int textView1=0x7f0a001d;
         public static final int timeTrialButton=0x7f0a0018;
+        public static final int timerTextView=0x7f0a001d;
     }
     public static final class layout {
         public static final int activity_high_scores=0x7f030000;

@@ -97,6 +97,7 @@ public class MainMenuActivity extends Activity {
 	public void onTimeTrialButtonClick(View view) {
 		Log.i(LOG_TAG, "onTimeTrialButtonClick");
 		
+		startActivityForResult(new Intent(this, TimeTrialActivity.class), 0);
 		
 	}
 

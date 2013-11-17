@@ -23,7 +23,8 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:gravity="left"
-            android:text="@string/pause_button" />
+            android:text="@string/pause_button" 
+            android:onClick="onPauseButtonClick"/>
 
         <TextView
             android:id="@+id/numberOfPunchesCounterTextView"
@@ -35,7 +36,7 @@
             android:text="@string/number_of_punches_default" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/timerTextView"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,8 +48,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip" 
-        android:layout_weight="45"
+        android:layout_height="10dp" 
+        android:layout_weight="10"
         android:gravity="center">
 
         <ImageView
@@ -63,14 +64,15 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:contentDescription="@string/punchingbag_image_view_description"
-            android:src="@drawable/stickman_punchingbag_object_dark_default" />
+            android:src="@drawable/stickman_punchingbag_object_dark_default" 
+            android:onClick="onPunchButtonOrPunchingBagClick"/>
 
     </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip" 
-        android:layout_weight="1"
+        android:layout_weight="10"
         android:gravity="center">
 
         <Button
@@ -78,7 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/punch_button" />
+            android:text="@string/punch_button" 
+            android:onClick="onPunchButtonOrPunchingBagClick"/>
 
     </LinearLayout>
 
