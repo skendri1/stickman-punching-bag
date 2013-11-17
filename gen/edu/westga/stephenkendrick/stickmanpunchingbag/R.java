@@ -87,23 +87,24 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
-        public static final int animation_image_view_description=0x7f06000c;
+        public static final int animation_image_view_description=0x7f06000d;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
         public static final int high_scores_button=0x7f060006;
-        public static final int high_scores_name_column=0x7f06000e;
-        public static final int high_scores_punches_column=0x7f06000f;
+        public static final int high_scores_name_column=0x7f06000f;
+        public static final int high_scores_punches_column=0x7f060010;
         public static final int image_description=0x7f060003;
         public static final int main_menu_button=0x7f060004;
         public static final int number_of_punches_default=0x7f060009;
         public static final int pause_button=0x7f060008;
+        public static final int player_name_dialog_title=0x7f06000c;
         public static final int punch_button=0x7f06000b;
-        public static final int punchingbag_image_view_description=0x7f06000d;
+        public static final int punchingbag_image_view_description=0x7f06000e;
         public static final int settings_button=0x7f060007;
         public static final int time_trial_button=0x7f060005;
         public static final int timer_default=0x7f06000a;
-        public static final int title_activity_high_scores=0x7f060010;
-        public static final int title_activity_time_trial=0x7f060011;
+        public static final int title_activity_high_scores=0x7f060011;
+        public static final int title_activity_time_trial=0x7f060012;
     }
     public static final class style {
         /** 

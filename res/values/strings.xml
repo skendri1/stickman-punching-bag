@@ -14,6 +14,8 @@
     <string name="timer_default">Timer</string>
     <string name="punch_button">Punch</string>
     
+    <string name="player_name_dialog_title">New High Score\nWhat is your name?</string>
+    
     <string name="animation_image_view_description">Stickman Animation</string>
     <string name="punchingbag_image_view_description">Punchingbag Animation</string>
     
