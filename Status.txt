@@ -1,2 +1,42 @@
 Status
 
+What Currently Works
+		As of Milestone Alpha, the following is currently working.
+				Main Menu
+					Time Trial, High Scores and Settings buttons currently are fully functional.
+				Settings
+					As of now, the settings allow the user to change the theme of the application.
+				Time Trial
+					The user can “punch”(tap) a button or the punching bag image to “punch” the bag. 
+					When the user punches the bag, it will count the punch.
+					The screen shows the user the number of punches the user has done.
+					The Timer is fully functional for a time of 30 seconds. I can always increase it if I want, but 30 seconds seems like a good amount of time.
+					The timer starts when the user first punches the bag.
+					When the timer runs out, the game asks for the user’s name so it can add the score to the High Score database. 
+					Right now, if the user presses the Pause button the timer pauses.
+					
+What Needs to Be Completed
+	The following still needs to be completed.
+		Animations for the stickman 
+		Clear High Scores from Settings Menu
+		Implement Pause of the Time Trial Game.
+		Error Catching
+
+Modifications of Project from Proposal
+	Most of the Proposals and Ideas from the Project Proposal are still on schedule to be completed on time. 
+	One idea from the proposal, selecting different objects to punch, may not be completed on time. As of now, this is put on 
+	hold with the intention to be completed if there is time. For now, assume this will not be done. Other than that idea, the 
+	rest of the Proposal should be completed.
+
+Progress Related to Proposed Schedule
+	The progress as it relates to the proposed schedule is on track, with a few modifications. The original schedule for 
+	Milestone Alpha was to have the Animation started or being worked on. I pushed that to the Beta version of the game. I moved 
+	up the work on the Time Trial game mode to Alpha so I can get an idea of the size for the animations. This worked out better 
+	because now the game is basically done except for the animations and bug fixing. 
+
+Major Problems Encountered
+	There was only one major problem that was encountered during work for Milestone Alpha. The problem was creating a custom layout
+	for displaying the High Scores of the game. I fixed this by manually getting the data from the database as an array, instead 
+	of using an adapter to bind the data to the view. There may be an easier way, but how I have it working is fine since it does work.
+
+	 
