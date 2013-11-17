@@ -10,4 +10,76 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".TimeTrialActivity" >
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/pauseButton"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="left"
+            android:text="@string/pause_button" />
+
+        <TextView
+            android:id="@+id/numberOfPunchesCounterTextView"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:text="@string/number_of_punches_default" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="right"
+            android:text="@string/timer_default" />
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip" 
+        android:layout_weight="45"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/stickmanAnimationView"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/animation_image_view_description"
+            android:src="@drawable/stickman_punchingbag_animation_dark_default" />
+
+        <ImageView
+            android:id="@+id/punchingBagImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/punchingbag_image_view_description"
+            android:src="@drawable/stickman_punchingbag_object_dark_default" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip" 
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/punchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/punch_button" />
+
+    </LinearLayout>
+
 </LinearLayout>

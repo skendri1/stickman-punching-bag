@@ -26,16 +26,22 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
-        public static final int stickman_punchingbag_button_dark=0x7f020001;
-        public static final int stickman_punchingbag_button_light=0x7f020002;
-        public static final int stickman_punchingbag_button_pink=0x7f020003;
-        public static final int stickman_punchingbag_main_image_dark=0x7f020004;
-        public static final int stickman_punchingbag_main_image_light=0x7f020005;
-        public static final int stickman_punchingbag_main_image_pink=0x7f020006;
+        public static final int stickman_punchingbag_animation_dark_default=0x7f020001;
+        public static final int stickman_punchingbag_animation_light_default=0x7f020002;
+        public static final int stickman_punchingbag_animation_pink_default=0x7f020003;
+        public static final int stickman_punchingbag_button_dark=0x7f020004;
+        public static final int stickman_punchingbag_button_light=0x7f020005;
+        public static final int stickman_punchingbag_button_pink=0x7f020006;
+        public static final int stickman_punchingbag_main_image_dark=0x7f020007;
+        public static final int stickman_punchingbag_main_image_light=0x7f020008;
+        public static final int stickman_punchingbag_main_image_pink=0x7f020009;
+        public static final int stickman_punchingbag_object_dark_default=0x7f02000a;
+        public static final int stickman_punchingbag_object_light_default=0x7f02000b;
+        public static final int stickman_punchingbag_object_pink_default=0x7f02000c;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a0016;
-        public static final int action_settings=0x7f0a001b;
+        public static final int action_settings=0x7f0a0021;
         public static final int highScores=0x7f0a0001;
         public static final int highScoresButton=0x7f0a0019;
         public static final int highScoresColumnNames=0x7f0a0004;
@@ -50,17 +56,23 @@ public final class R {
         public static final int mainMenuButton=0x7f0a0002;
         public static final int nameColTextView=0x7f0a0005;
         public static final int numberOfPunchesColTextView=0x7f0a0006;
+        public static final int numberOfPunchesCounterTextView=0x7f0a001c;
         public static final int numberOfPunchesTextView1=0x7f0a0009;
         public static final int numberOfPunchesTextView2=0x7f0a000c;
         public static final int numberOfPunchesTextView3=0x7f0a000f;
         public static final int numberOfPunchesTextView4=0x7f0a0012;
         public static final int numberOfPunchesTextView5=0x7f0a0015;
+        public static final int pauseButton=0x7f0a001b;
         public static final int playerNameTextView1=0x7f0a0008;
         public static final int playerNameTextView2=0x7f0a000b;
         public static final int playerNameTextView3=0x7f0a000e;
         public static final int playerNameTextView4=0x7f0a0011;
         public static final int playerNameTextView5=0x7f0a0014;
+        public static final int punchButton=0x7f0a0020;
+        public static final int punchingBagImageView=0x7f0a001f;
         public static final int settingsButton=0x7f0a001a;
+        public static final int stickmanAnimationView=0x7f0a001e;
+        public static final int textView1=0x7f0a001d;
         public static final int timeTrialButton=0x7f0a0018;
     }
     public static final class layout {
@@ -75,17 +87,23 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
+        public static final int animation_image_view_description=0x7f06000c;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
         public static final int high_scores_button=0x7f060006;
-        public static final int high_scores_name_column=0x7f060008;
-        public static final int high_scores_punches_column=0x7f060009;
+        public static final int high_scores_name_column=0x7f06000e;
+        public static final int high_scores_punches_column=0x7f06000f;
         public static final int image_description=0x7f060003;
         public static final int main_menu_button=0x7f060004;
+        public static final int number_of_punches_default=0x7f060009;
+        public static final int pause_button=0x7f060008;
+        public static final int punch_button=0x7f06000b;
+        public static final int punchingbag_image_view_description=0x7f06000d;
         public static final int settings_button=0x7f060007;
         public static final int time_trial_button=0x7f060005;
-        public static final int title_activity_high_scores=0x7f06000a;
-        public static final int title_activity_time_trial=0x7f06000b;
+        public static final int timer_default=0x7f06000a;
+        public static final int title_activity_high_scores=0x7f060010;
+        public static final int title_activity_time_trial=0x7f060011;
     }
     public static final class style {
         /** 

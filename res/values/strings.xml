@@ -9,6 +9,14 @@
     <string name="time_trial_button">Time Trial</string>
     <string name="high_scores_button">High Scores</string>
     <string name="settings_button">Settings</string>
+    <string name="pause_button">Pause</string>
+    <string name="number_of_punches_default">Number of Punches</string>
+    <string name="timer_default">Timer</string>
+    <string name="punch_button">Punch</string>
+    
+    <string name="animation_image_view_description">Stickman Animation</string>
+    <string name="punchingbag_image_view_description">Punchingbag Animation</string>
+    
     <string name="high_scores_name_column">Name</string>
     <string name="high_scores_punches_column">Number Of Punches</string>
 
