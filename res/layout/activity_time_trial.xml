@@ -53,19 +53,11 @@
         android:gravity="center">
 
         <ImageView
-            android:id="@+id/stickmanAnimationView"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:contentDescription="@string/animation_image_view_description"
-            android:src="@drawable/stickman_punchingbag_animation_dark_default" />
-
-        <ImageView
-            android:id="@+id/punchingBagImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:contentDescription="@string/punchingbag_image_view_description"
-            android:src="@drawable/stickman_punchingbag_object_dark_default" 
-            android:onClick="onPunchButtonOrPunchingBagClick"/>
+            android:id="@+id/animationImageView"
+            android:contentDescription="animation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/default_animation_holder" />
 
     </LinearLayout>
     
@@ -76,10 +68,20 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/punchButton"
-            android:layout_width="match_parent"
+            android:id="@+id/punchLeftButton"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="@string/punch_button" 
+            android:onClick="onPunchButtonOrPunchingBagClick"/>
+        
+        <Button
+            android:id="@+id/punchRightButton"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:text="@string/punch_button" 
             android:onClick="onPunchButtonOrPunchingBagClick"/>
 

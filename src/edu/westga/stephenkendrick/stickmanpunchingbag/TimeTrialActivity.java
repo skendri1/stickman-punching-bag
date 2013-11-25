@@ -7,6 +7,7 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.Controllers.TimeTrialGameC
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContentProviderDB;
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContract.HighScores;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,8 +18,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 public class TimeTrialActivity extends Activity implements Observer {
 
@@ -26,7 +29,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	private Bundle savedInstanceState;
 
+	private ImageView animation;
+	
 	private Button pauseButton;
+	
 	private TextView numberOfPunchesCounterTextView;
 	private TextView timerTextView;
 
@@ -43,6 +49,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.setUpTextViewsAndButtons();
 		this.createGameController();
+		
 	}
 
 	@Override
@@ -92,6 +99,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 		}
 
 		this.gameController.addOnePunchToPunchCounter();
+		
 	}
 
 	/**
