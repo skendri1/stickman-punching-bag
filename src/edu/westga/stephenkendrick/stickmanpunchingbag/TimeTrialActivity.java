@@ -69,6 +69,70 @@ public class TimeTrialActivity extends Activity implements Observer {
 		getMenuInflater().inflate(R.menu.time_trial, menu);
 		return true;
 	}
+	
+	
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onDestroy()
+	 */
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onDestroy");
+		super.onDestroy();
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onPause");
+		this.gameController.pauseTimer();
+		super.onPause();
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onRestart()
+	 */
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onRestart");
+		super.onRestart();
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onResume");
+		super.onResume();
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onStart()
+	 */
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onStart");
+		super.onStart();
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onStop()
+	 */
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		Log.i(LOG_TAG, "onStop");
+		super.onStop();
+	}
 
 	/**
 	 * Creates the game controller for the game
@@ -83,6 +147,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 	}
 
 	private void setTheme() {
+		Log.i(LOG_TAG, "setTheme");
 		
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
@@ -118,6 +183,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 	}
 	
 	private void setUpAnimations() {
+		
+		Log.i(LOG_TAG, "setUpAnimations");
+		
 		this.animationImageView = (ImageView) findViewById(R.id.animationImageView);
 		
 		
