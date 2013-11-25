@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -48,13 +50,14 @@ public class TimeTrialActivity extends Activity implements Observer {
 		Log.i(LOG_TAG, "onCreate");
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_time_trial);
 
 		this.savedInstanceState = savedInstanceState;
-
+		
+		this.setTheme();
+		this.setUpAnimations();
 		this.setUpTextViewsAndButtons();
 		this.createGameController();
-		this.setUpAnimations();
+		
 		
 	}
 
@@ -79,6 +82,30 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.gameController.addObserver(this);
 	}
 
+	private void setTheme() {
+		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
+		
+		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+			
+			this.setTheme(R.style.pinkTheme);
+			setContentView(R.layout.activity_time_trial);	
+			
+		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+			
+			this.setTheme(R.style.lightTheme);
+			setContentView(R.layout.activity_time_trial);		
+			
+			
+		} else {
+			
+			this.setTheme(R.style.darkTheme);
+			setContentView(R.layout.activity_time_trial);			
+
+		}
+	}
+	
 	private void setUpTextViewsAndButtons() {
 		Log.i(LOG_TAG, "setUpTextViewsAndButtons");
 
@@ -99,14 +126,14 @@ public class TimeTrialActivity extends Activity implements Observer {
 		
 		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 			
-			this.animationImageView.setBackgroundResource(R.drawable.animation_pink_right_images);
+			this.animationImageView.setBackgroundResource(R.drawable.animation_pink_right_images);	
 			
 		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 			
 			this.animationImageView.setBackgroundResource(R.drawable.animation_light_right_images);
 			
 		} else {
-			
+
 			this.animationImageView.setBackgroundResource(R.drawable.animation_dark_right_images);
 			
 		}
@@ -162,12 +189,13 @@ public class TimeTrialActivity extends Activity implements Observer {
 	public void update(Observable observable, Object data) {
 		Log.i(LOG_TAG, "update");
 
-		final EditText input = new EditText(this);
-
 		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
+				Dialog inputDialog = (Dialog) dialog;
+				EditText input = (EditText) inputDialog.findViewById(R.id.playerNameEditText);
+				
 				addHighScore(input.getText().toString(),
 						gameController.getNumberOfPunches());
 				finish();
@@ -175,9 +203,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(getString(R.string.player_name_dialog_title))
-				.setPositiveButton("OK", dialogClickListener);
-		builder.setView(input);
+		LayoutInflater inflater = this.getLayoutInflater();
+		builder.setView(inflater.inflate(R.layout.dialog_get_player_name, null))
+			.setPositiveButton("OK", dialogClickListener);
 		builder.setCancelable(false);
 		builder.show();
 
