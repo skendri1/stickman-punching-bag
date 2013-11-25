@@ -195,25 +195,25 @@ public class HighScoresActivity extends Activity implements
 		
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView2);
 
-		if (names.get(1) != null) {
+		if (names.size() >= 2 && names.get(1) != null) {
 			nameTextView.setText(names.get(1));
 		}
 		
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView3);
 
-		if (names.get(2) != null) {
+		if (names.size() >= 3 && names.get(2) != null) {
 			nameTextView.setText(names.get(2));
 		}
 		
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView4);
 
-		if (names.get(3) != null) {
+		if (names.size() >= 4 && names.get(3) != null) {
 			nameTextView.setText(names.get(3));
 		}
 		
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView5);
 
-		if (names.get(4) != null) {
+		if (names.size() >= 5 && names.get(4) != null) {
 			nameTextView.setText(names.get(4));
 		}
 		
@@ -235,25 +235,25 @@ public class HighScoresActivity extends Activity implements
 		
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView2);
 
-		if (taps.get(1) != null) {
+		if (taps.size() >= 2 && taps.get(1) != null) {
 			tapTextView.setText("" + taps.get(1));
 		}
 		
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView3);
 
-		if (taps.get(2) != null) {
+		if (taps.size() >= 3 && taps.get(2) != null) {
 			tapTextView.setText("" + taps.get(2));
 		}
 		
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView4);
 
-		if (taps.get(3) != null) {
+		if (taps.size() >= 4 && taps.get(3) != null) {
 			tapTextView.setText("" + taps.get(3));
 		}
 		
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView5);
 
-		if (taps.get(4) != null) {
+		if (taps.size() >= 5 && taps.get(4) != null) {
 			tapTextView.setText("" + taps.get(4));
 		}
 		

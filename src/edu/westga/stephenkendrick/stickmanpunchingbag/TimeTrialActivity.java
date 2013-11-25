@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.graphics.drawable.AnimationDrawable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -29,7 +30,8 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	private Bundle savedInstanceState;
 
-	private ImageView animation;
+	private AnimationDrawable animation;
+	private ImageView animationImageView;
 	
 	private Button pauseButton;
 	
@@ -49,6 +51,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.setUpTextViewsAndButtons();
 		this.createGameController();
+		this.setUpAnimations();
 		
 	}
 
@@ -80,6 +83,19 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.numberOfPunchesCounterTextView = (TextView) findViewById(R.id.numberOfPunchesCounterTextView);
 		this.timerTextView = (TextView) findViewById(R.id.timerTextView);
+		
+		
+	}
+	
+	private void setUpAnimations() {
+		this.animationImageView = (ImageView) findViewById(R.id.animationImageView);
+		
+		//TODO: add check to change based on theme.
+		this.animationImageView.setBackgroundResource(R.drawable.animation_dark_right_images);
+		
+		this.animation = (AnimationDrawable) this.animationImageView.getBackground();
+		
+		
 	}
 
 	/**
@@ -99,6 +115,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 		}
 
 		this.gameController.addOnePunchToPunchCounter();
+		
+		if(!this.animation.isRunning()) {
+			this.animation.start();
+		}
 		
 	}
 
