@@ -4,79 +4,79 @@
     android:oneshot="true">
     
     <item android:drawable="@drawable/dark_right_frame_00"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_01"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_02"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_03"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_04"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_05"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_06"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_07"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_08"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_09"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_10"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_11"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_12"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_13"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_14"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_15"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_16"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_17"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_18"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_19"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_20"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_21"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_22"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_23"
-        android:duration="50"/>
+        android:duration="10"/>
     
     <item android:drawable="@drawable/dark_right_frame_24"
-        android:duration="50"/>
+        android:duration="10"/>
     
 
 </animation-list>

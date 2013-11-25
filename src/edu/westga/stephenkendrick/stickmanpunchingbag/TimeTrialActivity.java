@@ -6,13 +6,16 @@ import java.util.Observer;
 import edu.westga.stephenkendrick.stickmanpunchingbag.Controllers.TimeTrialGameController;
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContentProviderDB;
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContract.HighScores;
+import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.Log;
 import android.view.Menu;
@@ -90,8 +93,23 @@ public class TimeTrialActivity extends Activity implements Observer {
 	private void setUpAnimations() {
 		this.animationImageView = (ImageView) findViewById(R.id.animationImageView);
 		
-		//TODO: add check to change based on theme.
-		this.animationImageView.setBackgroundResource(R.drawable.animation_dark_right_images);
+		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
+		
+		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+			
+			this.animationImageView.setBackgroundResource(R.drawable.animation_pink_right_images);
+			
+		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+			
+			this.animationImageView.setBackgroundResource(R.drawable.animation_light_right_images);
+			
+		} else {
+			
+			this.animationImageView.setBackgroundResource(R.drawable.animation_dark_right_images);
+			
+		}
 		
 		this.animation = (AnimationDrawable) this.animationImageView.getBackground();
 		
@@ -116,9 +134,13 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.gameController.addOnePunchToPunchCounter();
 		
-		if(!this.animation.isRunning()) {
+		if(this.animation.isRunning()) {
+			this.animation.stop();
+		} else {
+			this.animation.stop();
 			this.animation.start();
 		}
+		
 		
 	}
 

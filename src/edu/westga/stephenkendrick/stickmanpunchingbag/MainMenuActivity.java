@@ -54,16 +54,6 @@ public class MainMenuActivity extends Activity {
         return false;
     }
 
-//	private void savePreferences() {
-//		Log.i(LOG_TAG, "savePreferences");
-//		
-//		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//		
-//		Editor editor = preferences.edit();
-//		editor.putString(MainMenuActivityThemeChanger.THEME, this.theme.getCurrentTheme());
-//		editor.commit();
-//	}
-
 	private void loadPreferences() {
 		Log.i(LOG_TAG, "loadPreferences");
 		
