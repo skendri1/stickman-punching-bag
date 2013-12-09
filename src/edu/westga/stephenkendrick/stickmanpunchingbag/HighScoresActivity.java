@@ -54,7 +54,7 @@ public class HighScoresActivity extends Activity implements
 	private void loadPreferences() {
 		Log.i(LOG_TAG, "loadPreferences");
 
-		Button mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+		Button mainMenuButton = null;
 
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
@@ -64,32 +64,57 @@ public class HighScoresActivity extends Activity implements
 		if (themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 
-			mainMenuButton
-					.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
-
 			this.setTheme(R.style.pinkTheme);
 			this.setContentView(R.layout.activity_high_scores);
+			
+			View someView = findViewById(R.id.highScoresMainLayout);
+
+			View root = someView.getRootView();
+			
+			root.setBackgroundColor(getResources().getColor(android.R.color.white));
+			
+			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+			
+			mainMenuButton
+				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
 
 			this.convertTextViewTextColor(Color.BLACK);
 
 		} else if (themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 
-			mainMenuButton
-					.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
-
 			this.setTheme(R.style.lightTheme);
 			this.setContentView(R.layout.activity_high_scores);
+			
+			View someView = findViewById(R.id.highScoresMainLayout);
+
+			View root = someView.getRootView();
+			
+			root.setBackgroundColor(getResources().getColor(android.R.color.white));
+			
+			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+			
+			mainMenuButton
+				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
+			
 
 			this.convertTextViewTextColor(Color.BLACK);
 
 		} else {
 
-			mainMenuButton
-					.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
-
 			this.setTheme(R.style.darkTheme);
 			this.setContentView(R.layout.activity_high_scores);
+			
+			View someView = findViewById(R.id.highScoresMainLayout);
+
+			View root = someView.getRootView();
+			
+			root.setBackgroundColor(getResources().getColor(android.R.color.black));
+			
+			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+			
+			mainMenuButton
+					.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
 
 			this.convertTextViewTextColor(Color.WHITE);
 
