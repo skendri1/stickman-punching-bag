@@ -17,6 +17,9 @@
     
     <string name="player_name_dialog_title">New High Score\nWhat is your name?</string>
     
+    <string name="pause_dialog_title">Game Paused</string>
+    <string name="pause_dialog_message">The game is currently paused.\nClose this dialog to return to the game.</string>
+    
     <string name="animation_image_view_description">Stickman Animation</string>
     <string name="punchingbag_image_view_description">Punchingbag Animation</string>
     

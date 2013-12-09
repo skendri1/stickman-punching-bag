@@ -33,13 +33,17 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	private static final String LOG_TAG = "TimerTrialActivity";
 
+	public static final String GAME_MODE_FREE = "FreeMode";
+	public static final String GAME_MODE_RLR = "RLR";
+	public static final String GAME_MODE_LRL = "LRL";
+
 	private Bundle savedInstanceState;
 
 	private AnimationDrawable animation;
 	private ImageView animationImageView;
-	
+
 	private Button pauseButton;
-	
+
 	private TextView numberOfPunchesCounterTextView;
 	private TextView timerTextView;
 
@@ -52,13 +56,12 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onCreate(savedInstanceState);
 
 		this.savedInstanceState = savedInstanceState;
-		
+
 		this.setTheme();
 		this.setUpAnimations();
 		this.setUpTextViewsAndButtons();
 		this.createGameController();
-		
-		
+
 	}
 
 	@Override
@@ -69,10 +72,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 		getMenuInflater().inflate(R.menu.time_trial, menu);
 		return true;
 	}
-	
-	
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
@@ -82,7 +85,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onDestroy();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onPause()
 	 */
 	@Override
@@ -91,10 +96,12 @@ public class TimeTrialActivity extends Activity implements Observer {
 		Log.i(LOG_TAG, "onPause");
 		this.gameController.pauseTimer();
 		super.onPause();
-		
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onRestart()
 	 */
 	@Override
@@ -104,7 +111,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onRestart();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onResume()
 	 */
 	@Override
@@ -114,7 +123,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onResume();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStart()
 	 */
 	@Override
@@ -124,7 +135,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onStart();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onStop()
 	 */
 	@Override
@@ -148,29 +161,32 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	private void setTheme() {
 		Log.i(LOG_TAG, "setTheme");
-		
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
-		
-		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
-			
+
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme",
+				MainMenuActivityThemeChanger.DARK_THEME);
+
+		if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+
 			this.setTheme(R.style.pinkTheme);
-			setContentView(R.layout.activity_time_trial);	
-			
-		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
-			
+			setContentView(R.layout.activity_time_trial);
+
+		} else if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+
 			this.setTheme(R.style.lightTheme);
-			setContentView(R.layout.activity_time_trial);		
-			
-			
+			setContentView(R.layout.activity_time_trial);
+
 		} else {
-			
+
 			this.setTheme(R.style.darkTheme);
-			setContentView(R.layout.activity_time_trial);			
+			setContentView(R.layout.activity_time_trial);
 
 		}
 	}
-	
+
 	private void setUpTextViewsAndButtons() {
 		Log.i(LOG_TAG, "setUpTextViewsAndButtons");
 
@@ -178,37 +194,42 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.numberOfPunchesCounterTextView = (TextView) findViewById(R.id.numberOfPunchesCounterTextView);
 		this.timerTextView = (TextView) findViewById(R.id.timerTextView);
-		
-		
+
 	}
-	
+
 	private void setUpAnimations() {
-		
+
 		Log.i(LOG_TAG, "setUpAnimations");
-		
+
 		this.animationImageView = (ImageView) findViewById(R.id.animationImageView);
-		
-		
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
-		
-		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
-			
-			this.animationImageView.setBackgroundResource(R.drawable.animation_pink_right_images);	
-			
-		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
-			
-			this.animationImageView.setBackgroundResource(R.drawable.animation_light_right_images);
-			
+
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme",
+				MainMenuActivityThemeChanger.DARK_THEME);
+
+		if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_pink_right_images);
+
+		} else if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_light_right_images);
+
 		} else {
 
-			this.animationImageView.setBackgroundResource(R.drawable.animation_dark_right_images);
-			
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_dark_right_images);
+
 		}
-		
-		this.animation = (AnimationDrawable) this.animationImageView.getBackground();
-		
-		
+
+		this.animation = (AnimationDrawable) this.animationImageView
+				.getBackground();
+
 	}
 
 	/**
@@ -228,15 +249,14 @@ public class TimeTrialActivity extends Activity implements Observer {
 		}
 
 		this.gameController.addOnePunchToPunchCounter();
-		
-		if(this.animation.isRunning()) {
+
+		if (this.animation.isRunning()) {
 			this.animation.stop();
 		} else {
 			this.animation.stop();
 			this.animation.start();
 		}
-		
-		
+
 	}
 
 	/**
@@ -248,6 +268,25 @@ public class TimeTrialActivity extends Activity implements Observer {
 		Log.i(LOG_TAG, "onPauseButtonClick");
 
 		this.gameController.pauseTimer();
+
+		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+				gameController.startTimer();
+			}
+		};
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		LayoutInflater inflater = this.getLayoutInflater();
+		
+		builder.setView(inflater.inflate(R.layout.dialog_paused_game, null))
+				.setPositiveButton("OK", dialogClickListener);
+		
+		builder.setCancelable(false);
+		
+		builder.show();
 	}
 
 	/**
@@ -262,8 +301,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 			public void onClick(DialogInterface dialog, int which) {
 
 				Dialog inputDialog = (Dialog) dialog;
-				EditText input = (EditText) inputDialog.findViewById(R.id.playerNameEditText);
-				
+				EditText input = (EditText) inputDialog
+						.findViewById(R.id.playerNameEditText);
+
 				addHighScore(input.getText().toString(),
 						gameController.getNumberOfPunches());
 				finish();
@@ -271,10 +311,14 @@ public class TimeTrialActivity extends Activity implements Observer {
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
 		LayoutInflater inflater = this.getLayoutInflater();
+		
 		builder.setView(inflater.inflate(R.layout.dialog_get_player_name, null))
-			.setPositiveButton("OK", dialogClickListener);
+				.setPositiveButton("OK", dialogClickListener);
+		
 		builder.setCancelable(false);
+		
 		builder.show();
 
 	}
