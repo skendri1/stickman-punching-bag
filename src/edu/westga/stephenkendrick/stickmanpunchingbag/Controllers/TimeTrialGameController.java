@@ -59,6 +59,7 @@ public class TimeTrialGameController extends Observable{
 			this.createTimer(DEFAULT_START_TIME);
 		} else {
 			this.createTimer(bundle.getLong("startTime"));
+			this.setNumberOfPunches(bundle.getInt("numberOfPunches"));
 		}
 	}
 	
@@ -95,6 +96,22 @@ public class TimeTrialGameController extends Observable{
 	}
 	
 	/**
+	 * restarts the Timer of the game with the given startTime
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: timer has started
+	 */
+	public void restartTimer(long startTime){
+		Log.i(LOG_TAG, "restartTimer");
+		
+		this.isTimerRunning = true;
+		this.createTimer(startTime);
+		this.gameTimer.start();
+
+	}
+	
+	/**
 	 * Pause the Timer of the game
 	 * <p>
 	 * Precondition: timer has started
@@ -109,6 +126,20 @@ public class TimeTrialGameController extends Observable{
 		
 		this.isTimerRunning = false;
 		this.gameTimer.cancel();
+
+	}
+	
+	/**
+	 * Starts the Timer of the game
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: timer has started
+	 */
+	public long getTimerDurationRemaining(){
+		Log.i(LOG_TAG, "getTimerDurationRemaining");
+		
+		return this.msLeft;
 
 	}
 	

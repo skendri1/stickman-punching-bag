@@ -45,7 +45,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 	private String themeString;
 
 	private AnimationDrawable animation;
-	
+
 	private ImageView animationImageView;
 
 	private Button pauseButton;
@@ -64,13 +64,13 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.savedInstanceState = savedInstanceState;
 
 		this.setTheme();
-		
+
 		this.setUpTextViewsAndButtons();
-		
+
 		this.createGameController();
-		
+
 		this.setUpAnimations();
-		
+
 	}
 
 	@Override
@@ -82,11 +82,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onDestroy()
-	 */
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
@@ -94,11 +89,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onDestroy();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onPause()
-	 */
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
@@ -108,11 +98,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onRestart()
-	 */
 	@Override
 	protected void onRestart() {
 		// TODO Auto-generated method stub
@@ -120,11 +105,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onRestart();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onResume()
-	 */
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -132,11 +112,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onResume();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStart()
-	 */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -144,11 +119,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		super.onStart();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStop()
-	 */
 	@Override
 	protected void onStop() {
 		// TODO Auto-generated method stub
@@ -205,7 +175,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.timerTextView = (TextView) findViewById(R.id.timerTextView);
 
 	}
-	
 
 	private void setUpAnimations() {
 
@@ -217,114 +186,92 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.RunRightAnimation();
 
 	}
-	
+
 	private void RunLeftAnimation() {
 		Log.i(LOG_TAG, "RunLeftAnimation");
-		
+
 		if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_pink_left_images);
 
-
 		} else if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_light_left_images);
-			
 
 		} else {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_dark_left_images);
 		}
-		
+
 		this.animation = (AnimationDrawable) this.animationImageView
 				.getBackground();
-		
+
 		if (this.gameController.isTimerStarted()) {
-			
-		
-			this.animation.stop();
-			this.animation.start();
-			
-			int iDuration = 0;
-	
-		    for (int i = 0; i < this.animation.getNumberOfFrames(); i++) {
-		        iDuration += this.animation.getDuration(i);
-		    }
-		    
-		    Handler mAnimationHandler = new Handler();
-		    mAnimationHandler.postDelayed(new Runnable() {
-	
-		        public void run() {
-		            animation.stop();
-		        }
-		    }, iDuration*2);
-			
-			new Thread(new Runnable() {
-		        public void run() {
-		            
-		        }
-		    }).start();
+
+			this.runAnimation();
 		}
-		
+
 	}
-	
+
 	private void RunRightAnimation() {
 		Log.i(LOG_TAG, "RunRightAnimation");
-		
+
 		if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_pink_right_images);
 
-
 		} else if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_light_right_images);
-			
 
 		} else {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_dark_right_images);
 		}
-		
+
 		this.animation = (AnimationDrawable) this.animationImageView
 				.getBackground();
-		
+
 		if (this.gameController.isTimerStarted()) {
 
-			this.animation.stop();
-			this.animation.start();
-			
-			int iDuration = 0;
-	
-		    for (int i = 0; i < this.animation.getNumberOfFrames(); i++) {
-		        iDuration += this.animation.getDuration(i);
-		    }
-		    
-		    Handler mAnimationHandler = new Handler();
-		    mAnimationHandler.postDelayed(new Runnable() {
-	
-		        public void run() {
-		            animation.stop();
-		        }
-		    }, iDuration*2);
-			
-			new Thread(new Runnable() {
-		        public void run() {
-		            
-		        }
-		    }).start();
+			runAnimation();
 		}
-		
+
+	}
+
+	private void runAnimation() {
+		this.animation.stop();
+		this.animation.start();
+
+		int iDuration = 0;
+
+		for (int i = 0; i < this.animation.getNumberOfFrames(); i++) {
+			iDuration += this.animation.getDuration(i);
+		}
+
+		Handler mAnimationHandler = new Handler();
+		mAnimationHandler.postDelayed(new Runnable() {
+
+			public void run() {
+				animation.stop();
+			}
+		}, iDuration * 2);
+
+		new Thread(new Runnable() {
+			public void run() {
+
+			}
+		}).start();
 	}
 
 	/**
@@ -349,9 +296,8 @@ public class TimeTrialActivity extends Activity implements Observer {
 			this.RunLeftAnimation();
 		}
 
-
 	}
-	
+
 	/**
 	 * Handles the punch or punching bag click
 	 * <p>
@@ -369,11 +315,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 		}
 
 		this.gameController.addOnePunchToPunchCounter();
-		
+
 		if (this.animation == null || !this.animation.isRunning()) {
 			this.RunRightAnimation();
 		}
-		
 
 	}
 
@@ -384,26 +329,31 @@ public class TimeTrialActivity extends Activity implements Observer {
 	 */
 	public void onPauseButtonClick(View view) {
 		Log.i(LOG_TAG, "onPauseButtonClick");
-
+		
+		if(!this.gameController.isTimerStarted()) {
+			return;
+		}
+		
+		final long timeLeft = this.gameController.getTimerDurationRemaining();
 		this.gameController.pauseTimer();
 
 		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 
-				gameController.startTimer();
+				gameController.restartTimer(timeLeft);
 			}
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		
+
 		LayoutInflater inflater = this.getLayoutInflater();
-		
+
 		builder.setView(inflater.inflate(R.layout.dialog_paused_game, null))
 				.setPositiveButton("OK", dialogClickListener);
-		
+
 		builder.setCancelable(false);
-		
+
 		builder.show();
 	}
 
@@ -429,14 +379,14 @@ public class TimeTrialActivity extends Activity implements Observer {
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		
+
 		LayoutInflater inflater = this.getLayoutInflater();
-		
+
 		builder.setView(inflater.inflate(R.layout.dialog_get_player_name, null))
 				.setPositiveButton("OK", dialogClickListener);
-		
+
 		builder.setCancelable(false);
-		
+
 		builder.show();
 
 	}
