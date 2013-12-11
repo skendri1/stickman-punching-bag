@@ -32,6 +32,8 @@ public class TimeTrialGameController extends Observable{
 	
 	private int numberOfPunches;
 	
+	private String punchMode;
+	
 	
 	/**
 	 * Creates the TimeTrialGameController class that will handle the game mechanics.
@@ -40,7 +42,7 @@ public class TimeTrialGameController extends Observable{
 	 * 
 	 * Postcondition: none
 	 */
-	public TimeTrialGameController(Bundle bundle,TextView timerTextView, TextView numberOfPunchesTextView) {
+	public TimeTrialGameController(TextView timerTextView, TextView numberOfPunchesTextView, String punchMode) {
 		
 		Log.i(LOG_TAG, "TimeTrialGameController Constructor");
 		
@@ -55,12 +57,8 @@ public class TimeTrialGameController extends Observable{
 		this.timerTextView = timerTextView;
 		this.numberOfPunchesTextView = numberOfPunchesTextView;
 		
-		if(bundle == null) {
-			this.createTimer(DEFAULT_START_TIME);
-		} else {
-			this.createTimer(bundle.getLong("startTime"));
-			this.setNumberOfPunches(bundle.getInt("numberOfPunches"));
-		}
+		this.createTimer(DEFAULT_START_TIME);
+		
 	}
 	
 	/**

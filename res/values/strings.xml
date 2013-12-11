@@ -15,6 +15,11 @@
     <string name="punch_button">Punch</string>
     <string name="clear">Clear</string>
     
+    <string name="punch_mode_free">Free Punch</string>
+    <string name="punch_mode_alt">Alternate Punches</string>
+    <string name="punch_mode_left">All Left Punch</string>
+    <string name="punch_mode_right">All Right Punch</string>
+    
     <string name="player_name_dialog_title">New High Score\nWhat is your name?</string>
     
     <string name="pause_dialog_title">Game Paused</string>

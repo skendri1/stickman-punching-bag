@@ -7,12 +7,10 @@ import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 /**
  * Main Menu Activity
@@ -24,6 +22,8 @@ public class MainMenuActivity extends Activity {
 	private static final String LOG_TAG = "MainMenuActivity";
 
 	private MainMenuActivityThemeChanger theme;
+	
+	private String punchMode;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,35 +43,39 @@ public class MainMenuActivity extends Activity {
 		menu.add(Menu.NONE, 0, 0, "Settings");
 		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case 0:
-                startActivityForResult(new Intent(this, SettingsActivity.class), 0);
-                return true;
-        }
-        return false;
-    }
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case 0:
+			startActivityForResult(new Intent(this, SettingsActivity.class), 0);
+			return true;
+		}
+		return false;
+	}
 
 	private void loadPreferences() {
 		Log.i(LOG_TAG, "loadPreferences");
-		
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString("theme_scheme", MainMenuActivityThemeChanger.DARK_THEME);
-		
-		if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
-			
+
+		SharedPreferences preferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String themeString = preferences.getString("theme_scheme",
+				MainMenuActivityThemeChanger.DARK_THEME);
+
+		if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+
 			this.theme.changeThemeToPink();
-			
-		} else if (themeString.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
-			
+
+		} else if (themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+
 			this.theme.changeThemeToLight();
-			
+
 		} else {
-			
+
 			this.theme.changeThemeToDark();
-			
+
 		}
 	}
 
@@ -87,8 +91,10 @@ public class MainMenuActivity extends Activity {
 	public void onTimeTrialButtonClick(View view) {
 		Log.i(LOG_TAG, "onTimeTrialButtonClick");
 		
-		startActivityForResult(new Intent(this, TimeTrialActivity.class), 0);
-		
+		Intent intent = new Intent(this, TimeTrialActivity.class);
+
+		startActivityForResult(intent, 0);
+
 	}
 
 	/**
@@ -117,14 +123,14 @@ public class MainMenuActivity extends Activity {
 	 */
 	public void onSettingsButtonClick(View view) {
 		Log.i(LOG_TAG, "onSettingsButtonClick");
-		
+
 		startActivityForResult(new Intent(this, SettingsActivity.class), 0);
 
 	}
-	
+
 	@Override
-	 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		this.loadPreferences();
-	 }
+	}
 
 }

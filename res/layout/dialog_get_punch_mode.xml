@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/punchRadioSelectionGroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RadioButton
+        android:id="@+id/punchModeRadioFree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punch_mode_free" 
+        android:checked="true"/>
+
+    <RadioButton
+        android:id="@+id/punchModeRadioAlt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punch_mode_alt" />
+
+    <RadioButton
+        android:id="@+id/punchModeRadioLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punch_mode_left" />
+
+    <RadioButton
+        android:id="@+id/punchModeRadioRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/punch_mode_right" />
+
+</RadioGroup>

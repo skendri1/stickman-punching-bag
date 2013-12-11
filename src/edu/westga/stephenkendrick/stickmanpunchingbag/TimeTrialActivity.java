@@ -38,10 +38,12 @@ public class TimeTrialActivity extends Activity implements Observer {
 	private static final String LOG_TAG = "TimerTrialActivity";
 
 	public static final String GAME_MODE_FREE = "FreeMode";
-	public static final String GAME_MODE_RLR = "RLR";
-	public static final String GAME_MODE_LRL = "LRL";
+	public static final String GAME_MODE_ALT = "ALT";
+	public static final String GAME_MODE_LEFT = "LEFT";
+	public static final String GAME_MODE_RIGHT = "RIGHT";
+	
+	private String punchMode;
 
-	private Bundle savedInstanceState;
 	private String themeString;
 
 	private AnimationDrawable animation;
@@ -61,12 +63,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		super.onCreate(savedInstanceState);
 
-		this.savedInstanceState = savedInstanceState;
-
 		this.setTheme();
 
 		this.setUpTextViewsAndButtons();
-
+		
 		this.createGameController();
 
 		this.setUpAnimations();
@@ -74,24 +74,16 @@ public class TimeTrialActivity extends Activity implements Observer {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i(LOG_TAG, "onCreateOptionsMenu");
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.time_trial, menu);
-		return true;
-	}
-
-	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		Log.i(LOG_TAG, "onDestroy");
 		super.onDestroy();
+		System.gc();
+		
+		
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		Log.i(LOG_TAG, "onPause");
 		this.gameController.pauseTimer();
 		super.onPause();
@@ -100,30 +92,15 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	@Override
 	protected void onRestart() {
-		// TODO Auto-generated method stub
 		Log.i(LOG_TAG, "onRestart");
 		super.onRestart();
+		this.gameController.startTimer();
 	}
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		Log.i(LOG_TAG, "onResume");
 		super.onResume();
-	}
-
-	@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		Log.i(LOG_TAG, "onStart");
-		super.onStart();
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		Log.i(LOG_TAG, "onStop");
-		super.onStop();
 	}
 
 	/**
@@ -132,9 +109,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 	public void createGameController() {
 		Log.i(LOG_TAG, "createGameController");
 
-		this.gameController = new TimeTrialGameController(
-				this.savedInstanceState, this.timerTextView,
-				this.numberOfPunchesCounterTextView);
+		this.punchMode = TimeTrialActivity.GAME_MODE_FREE;
+		
+		this.gameController = new TimeTrialGameController( this.timerTextView,
+				this.numberOfPunchesCounterTextView, this.punchMode);
 		this.gameController.addObserver(this);
 	}
 
