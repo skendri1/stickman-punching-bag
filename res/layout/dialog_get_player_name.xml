@@ -12,6 +12,7 @@
 
     <EditText
         android:id="@+id/playerNameEditText"
+        android:hint="@string/player_name_dialog_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

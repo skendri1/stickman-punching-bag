@@ -1,33 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/punchRadioSelectionGroup"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@android:color/white">
 
-    <RadioButton
-        android:id="@+id/punchModeRadioFree"
+    <TextView
+        android:id="@+id/dialogMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/punch_mode_free" 
-        android:checked="true"/>
+        android:text="@string/punch_mode_dialog_message" 
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"/>
 
-    <RadioButton
-        android:id="@+id/punchModeRadioAlt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/punch_mode_alt" />
+    <RadioGroup
+        android:id="@+id/punchRadioSelectionGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
 
-    <RadioButton
-        android:id="@+id/punchModeRadioLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/punch_mode_left" />
+        <RadioButton
+            android:id="@+id/punchModeRadioFree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:checked="true"
+            android:text="@string/punch_mode_free"
+            android:textColor="@android:color/black" />
 
-    <RadioButton
-        android:id="@+id/punchModeRadioRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/punch_mode_right" />
+        <RadioButton
+            android:id="@+id/punchModeRadioAlt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="@string/punch_mode_alt"
+            android:textColor="@android:color/black" />
 
-</RadioGroup>
+        <RadioButton
+            android:id="@+id/punchModeRadioLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="@string/punch_mode_left"
+            android:textColor="@android:color/black" />
+
+        <RadioButton
+            android:id="@+id/punchModeRadioRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="@string/punch_mode_right"
+            android:textColor="@android:color/black" />
+    </RadioGroup>
+
+</LinearLayout>

@@ -8,7 +8,6 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContent
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContract.HighScores;
 import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -21,17 +20,10 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 public class TimeTrialActivity extends Activity implements Observer {
 
@@ -49,8 +41,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 	private AnimationDrawable animation;
 
 	private ImageView animationImageView;
-
-	private Button pauseButton;
 
 	private TextView numberOfPunchesCounterTextView;
 	private TextView timerTextView;
@@ -146,8 +136,6 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 	private void setUpTextViewsAndButtons() {
 		Log.i(LOG_TAG, "setUpTextViewsAndButtons");
-
-		this.pauseButton = (Button) findViewById(R.id.pauseButton);
 
 		this.numberOfPunchesCounterTextView = (TextView) findViewById(R.id.numberOfPunchesCounterTextView);
 		this.timerTextView = (TextView) findViewById(R.id.timerTextView);

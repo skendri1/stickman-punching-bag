@@ -5,12 +5,17 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.settings.SettingsActivity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioGroup;
 
 /**
  * Main Menu Activity
@@ -33,6 +38,8 @@ public class MainMenuActivity extends Activity {
 
 		this.theme = new MainMenuActivityThemeChanger(this);
 		this.loadPreferences();
+		
+		this.punchMode = TimeTrialActivity.GAME_MODE_FREE; // Free by default
 
 	}
 
@@ -40,7 +47,9 @@ public class MainMenuActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		Log.i(LOG_TAG, "onCreateOptionsMenu");
+		
 		menu.add(Menu.NONE, 0, 0, "Settings");
+		
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -91,10 +100,70 @@ public class MainMenuActivity extends Activity {
 	public void onTimeTrialButtonClick(View view) {
 		Log.i(LOG_TAG, "onTimeTrialButtonClick");
 		
+		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int id) {
+				Dialog modeDialog = (Dialog) dialog;
+				
+				RadioGroup radioGroup = (RadioGroup) modeDialog.findViewById(R.id.punchRadioSelectionGroup);
+
+				setPunchMode(modeDialog, radioGroup);
+
+				startTimeTrialActivity();
+			}
+		};
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		LayoutInflater inflater = this.getLayoutInflater();
+
+		builder.setView(inflater.inflate(R.layout.dialog_get_punch_mode, null));
+		
+		// Add action buttons
+		builder.setPositiveButton("OK", dialogClickListener);
+
+		builder.setCancelable(false);
+		
+		builder.show();
+		
+
+	}
+	
+	private void setPunchMode(Dialog modeDialog, RadioGroup punchModeRadioGroup) {
+		if (punchModeRadioGroup == null) {
+			return;
+		}
+
+		int selectedRadioButtonId = punchModeRadioGroup
+				.getCheckedRadioButtonId();
+		View radioButton = punchModeRadioGroup
+				.findViewById(selectedRadioButtonId);
+
+		if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioAlt))) {
+
+			this.punchMode = TimeTrialActivity.GAME_MODE_ALT;
+
+		} else if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioLeft))) {
+
+			this.punchMode = TimeTrialActivity.GAME_MODE_LEFT;
+
+		} else if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioRight))) {
+
+			this.punchMode = TimeTrialActivity.GAME_MODE_RIGHT;
+
+		} else {
+
+			this.punchMode = TimeTrialActivity.GAME_MODE_FREE;
+
+		}
+
+	}
+	
+	private void startTimeTrialActivity() {
 		Intent intent = new Intent(this, TimeTrialActivity.class);
 
+		intent.putExtra("punchMode", this.punchMode);
+		
 		startActivityForResult(intent, 0);
-
 	}
 
 	/**

@@ -5,7 +5,6 @@ package edu.westga.stephenkendrick.stickmanpunchingbag.Controllers;
 
 import java.util.Observable;
 
-import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.TextView;
@@ -55,7 +54,10 @@ public class TimeTrialGameController extends Observable{
 		}
 		
 		this.timerTextView = timerTextView;
+		
 		this.numberOfPunchesTextView = numberOfPunchesTextView;
+		
+		this.setPunchMode(punchMode);
 		
 		this.createTimer(DEFAULT_START_TIME);
 		
@@ -259,6 +261,20 @@ public class TimeTrialGameController extends Observable{
 		this.numberOfPunchesTextView = numberOfPunchesTextView;
 	}
 
+
+	/**
+	 * @return the punchMode
+	 */
+	public String getPunchMode() {
+		return punchMode;
+	}
+
+	/**
+	 * @param punchMode the punchMode to set
+	 */
+	public void setPunchMode(String punchMode) {
+		this.punchMode = punchMode;
+	}
 
 	/**
 	 * Returns the number of punches the game currently has counted
