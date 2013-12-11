@@ -192,10 +192,10 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a0017;
-        public static final int action_settings=0x7f0a002b;
-        public static final int animationImageView=0x7f0a001f;
+        public static final int action_settings=0x7f0a002d;
+        public static final int animationImageView=0x7f0a0021;
         public static final int clearButton=0x7f0a0004;
-        public static final int dialogMessage=0x7f0a0024;
+        public static final int dialogMessage=0x7f0a0026;
         public static final int highScores=0x7f0a0001;
         public static final int highScoresButton=0x7f0a001a;
         public static final int highScoresColumnNames=0x7f0a0005;
@@ -207,52 +207,57 @@ public final class R {
         public static final int highscoreslistitem4=0x7f0a0011;
         public static final int highscoreslistitem5=0x7f0a0014;
         public static final int imageView1=0x7f0a0018;
+        public static final int imgLogo=0x7f0a001c;
         public static final int mainMenuButton=0x7f0a0002;
-        public static final int message=0x7f0a002a;
+        public static final int message=0x7f0a002c;
         public static final int nameColTextView=0x7f0a0006;
         public static final int numberOfPunchesColTextView=0x7f0a0007;
-        public static final int numberOfPunchesCounterTextView=0x7f0a001d;
+        public static final int numberOfPunchesCounterTextView=0x7f0a001f;
         public static final int numberOfPunchesTextView1=0x7f0a000a;
         public static final int numberOfPunchesTextView2=0x7f0a000d;
         public static final int numberOfPunchesTextView3=0x7f0a0010;
         public static final int numberOfPunchesTextView4=0x7f0a0013;
         public static final int numberOfPunchesTextView5=0x7f0a0016;
-        public static final int pauseButton=0x7f0a001c;
-        public static final int playerNameEditText=0x7f0a0023;
+        public static final int pauseButton=0x7f0a001e;
+        public static final int playerNameEditText=0x7f0a0025;
         public static final int playerNameTextView1=0x7f0a0009;
         public static final int playerNameTextView2=0x7f0a000c;
         public static final int playerNameTextView3=0x7f0a000f;
         public static final int playerNameTextView4=0x7f0a0012;
         public static final int playerNameTextView5=0x7f0a0015;
-        public static final int punchLeftButton=0x7f0a0020;
-        public static final int punchModeRadioAlt=0x7f0a0027;
-        public static final int punchModeRadioFree=0x7f0a0026;
-        public static final int punchModeRadioLeft=0x7f0a0028;
-        public static final int punchModeRadioRight=0x7f0a0029;
-        public static final int punchRadioSelectionGroup=0x7f0a0025;
-        public static final int punchRightButton=0x7f0a0021;
+        public static final int punchLeftButton=0x7f0a0022;
+        public static final int punchModeRadioAlt=0x7f0a0029;
+        public static final int punchModeRadioFree=0x7f0a0028;
+        public static final int punchModeRadioLeft=0x7f0a002a;
+        public static final int punchModeRadioRight=0x7f0a002b;
+        public static final int punchRadioSelectionGroup=0x7f0a0027;
+        public static final int punchRightButton=0x7f0a0023;
         public static final int settingsButton=0x7f0a001b;
+        public static final int splashScreenInfoTextView=0x7f0a001d;
         public static final int timeTrialButton=0x7f0a0019;
-        public static final int timerTextView=0x7f0a001e;
-        public static final int title=0x7f0a0022;
+        public static final int timerTextView=0x7f0a0020;
+        public static final int title=0x7f0a0024;
     }
     public static final class layout {
         public static final int activity_high_scores=0x7f030000;
         public static final int activity_main_menu=0x7f030001;
-        public static final int activity_time_trial=0x7f030002;
-        public static final int dialog_get_player_name=0x7f030003;
-        public static final int dialog_get_punch_mode=0x7f030004;
-        public static final int dialog_paused_game=0x7f030005;
+        public static final int activity_splash_screen=0x7f030002;
+        public static final int activity_time_trial=0x7f030003;
+        public static final int dialog_get_player_name=0x7f030004;
+        public static final int dialog_get_punch_mode=0x7f030005;
+        public static final int dialog_paused_game=0x7f030006;
     }
     public static final class menu {
         public static final int high_scores=0x7f090000;
         public static final int main_menu=0x7f090001;
-        public static final int time_trial=0x7f090002;
+        public static final int splash_screen=0x7f090002;
+        public static final int time_trial=0x7f090003;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int animation_image_view_description=0x7f060016;
         public static final int app_name=0x7f060000;
+        public static final int author_info=0x7f06001d;
         public static final int clear=0x7f06000c;
         public static final int hello_world=0x7f060002;
         public static final int high_scores_button=0x7f060006;
@@ -277,6 +282,7 @@ public final class R {
         public static final int time_trial_button=0x7f060005;
         public static final int timer_default=0x7f06000a;
         public static final int title_activity_high_scores=0x7f06001a;
+        public static final int title_activity_splash_screen=0x7f06001c;
         public static final int title_activity_time_trial=0x7f06001b;
     }
     public static final class style {

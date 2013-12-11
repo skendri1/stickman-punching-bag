@@ -14,22 +14,17 @@
     <string name="timer_default">Timer</string>
     <string name="punch_button">Punch</string>
     <string name="clear">Clear</string>
-    
     <string name="punch_mode_dialog_message">Select your punch combination mode</string>
     <string name="punch_mode_free">Free Punch</string>
     <string name="punch_mode_alt">Alternate Punches</string>
     <string name="punch_mode_left">All Left Punch</string>
     <string name="punch_mode_right">All Right Punch</string>
-    
     <string name="player_name_dialog_title">New High Score\nWhat is your name?</string>
     <string name="player_name_dialog_hint">Name</string>
-    
     <string name="pause_dialog_title">Game Paused</string>
     <string name="pause_dialog_message">The game is currently paused.\nClose this dialog to return to the game.</string>
-    
     <string name="animation_image_view_description">Stickman Animation</string>
     <string name="punchingbag_image_view_description">Punchingbag Animation</string>
-    
     <string name="high_scores_name_column">Name</string>
     <string name="high_scores_punches_column">Number Of Punches</string>
 
@@ -46,5 +41,8 @@
 
     <string name="title_activity_high_scores">HighScoresActivity</string>
     <string name="title_activity_time_trial">TimeTrialActivity</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    
+    <string name="author_info">Created By:\t\tStephen Kendrick\nContact At:\t\tskendri1@my.westga.edu</string>
 
 </resources>

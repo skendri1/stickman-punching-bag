@@ -12,40 +12,56 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/darkTheme" 
-        android:largeHeap="true">
+        android:largeHeap="true"
+        android:theme="@style/darkTheme" >
         <provider
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContentProviderDB"
             android:authorities="edu.westga.stephenkendrick.stickmanpunchingbag.Database" >
         </provider>
 
+        <!-- Splash Screen -->
         <activity
-            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.MainMenuActivity"
-            android:label="@string/app_name"
+            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.SplashScreenActivity"
+            android:label="@string/title_activity_splash_screen" 
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <!-- Main Menu Activity -->
+        <activity
+            android:name="edu.westga.stephenkendrick.stickmanpunchingbag.MainMenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        
+        <!-- Settings Activity -->
         <activity
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.settings.SettingsActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/lightTheme" >
         </activity>
+        
+        <!-- High Scores Activity -->
         <activity
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.HighScoresActivity"
             android:label="@string/title_activity_high_scores"
             android:screenOrientation="landscape" >
         </activity>
+        
+        <!-- Time Trial Activity -->
         <activity
             android:name="edu.westga.stephenkendrick.stickmanpunchingbag.TimeTrialActivity"
-            android:label="@string/title_activity_time_trial" 
+            android:label="@string/title_activity_time_trial"
             android:screenOrientation="landscape" >
         </activity>
+        
     </application>
 
 </manifest>
