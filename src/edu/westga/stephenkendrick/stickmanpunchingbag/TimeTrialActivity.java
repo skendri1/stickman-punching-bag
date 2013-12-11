@@ -10,6 +10,7 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivit
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,6 +23,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,8 +42,10 @@ public class TimeTrialActivity extends Activity implements Observer {
 	public static final String GAME_MODE_LRL = "LRL";
 
 	private Bundle savedInstanceState;
+	private String themeString;
 
 	private AnimationDrawable animation;
+	
 	private ImageView animationImageView;
 
 	private Button pauseButton;
@@ -58,10 +64,13 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.savedInstanceState = savedInstanceState;
 
 		this.setTheme();
-		this.setUpAnimations();
+		
 		this.setUpTextViewsAndButtons();
+		
 		this.createGameController();
-
+		
+		this.setUpAnimations();
+		
 	}
 
 	@Override
@@ -164,7 +173,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString("theme_scheme",
+		this.themeString = preferences.getString("theme_scheme",
 				MainMenuActivityThemeChanger.DARK_THEME);
 
 		if (themeString
@@ -196,6 +205,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.timerTextView = (TextView) findViewById(R.id.timerTextView);
 
 	}
+	
 
 	private void setUpAnimations() {
 
@@ -203,33 +213,118 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.animationImageView = (ImageView) findViewById(R.id.animationImageView);
 
-		SharedPreferences preferences = PreferenceManager
-				.getDefaultSharedPreferences(this);
-		String themeString = preferences.getString("theme_scheme",
-				MainMenuActivityThemeChanger.DARK_THEME);
+		this.RunLeftAnimation();
+		this.RunRightAnimation();
 
-		if (themeString
+	}
+	
+	private void RunLeftAnimation() {
+		Log.i(LOG_TAG, "RunLeftAnimation");
+		
+		if (this.themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
+
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_pink_left_images);
+
+
+		} else if (this.themeString
+				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
+
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_light_left_images);
+			
+
+		} else {
+
+			this.animationImageView
+					.setBackgroundResource(R.drawable.animation_dark_left_images);
+		}
+		
+		this.animation = (AnimationDrawable) this.animationImageView
+				.getBackground();
+		
+		if (this.gameController.isTimerStarted()) {
+			
+		
+			this.animation.stop();
+			this.animation.start();
+			
+			int iDuration = 0;
+	
+		    for (int i = 0; i < this.animation.getNumberOfFrames(); i++) {
+		        iDuration += this.animation.getDuration(i);
+		    }
+		    
+		    Handler mAnimationHandler = new Handler();
+		    mAnimationHandler.postDelayed(new Runnable() {
+	
+		        public void run() {
+		            animation.stop();
+		        }
+		    }, iDuration*2);
+			
+			new Thread(new Runnable() {
+		        public void run() {
+		            
+		        }
+		    }).start();
+		}
+		
+	}
+	
+	private void RunRightAnimation() {
+		Log.i(LOG_TAG, "RunRightAnimation");
+		
+		if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_pink_right_images);
 
-		} else if (themeString
+
+		} else if (this.themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_light_right_images);
+			
 
 		} else {
 
 			this.animationImageView
 					.setBackgroundResource(R.drawable.animation_dark_right_images);
-
 		}
-
+		
 		this.animation = (AnimationDrawable) this.animationImageView
 				.getBackground();
+		
+		if (this.gameController.isTimerStarted()) {
 
+			this.animation.stop();
+			this.animation.start();
+			
+			int iDuration = 0;
+	
+		    for (int i = 0; i < this.animation.getNumberOfFrames(); i++) {
+		        iDuration += this.animation.getDuration(i);
+		    }
+		    
+		    Handler mAnimationHandler = new Handler();
+		    mAnimationHandler.postDelayed(new Runnable() {
+	
+		        public void run() {
+		            animation.stop();
+		        }
+		    }, iDuration*2);
+			
+			new Thread(new Runnable() {
+		        public void run() {
+		            
+		        }
+		    }).start();
+		}
+		
 	}
 
 	/**
@@ -241,8 +336,8 @@ public class TimeTrialActivity extends Activity implements Observer {
 	 * 
 	 * @param view
 	 */
-	public void onPunchButtonOrPunchingBagClick(View view) {
-		Log.i(LOG_TAG, "onPunchButtonOrPunchingBagClick");
+	public void onLeftPunchButtonOrPunchingBagClick(View view) {
+		Log.i(LOG_TAG, "onLeftPunchButtonOrPunchingBagClick");
 
 		if (!this.gameController.isTimerStarted()) {
 			this.gameController.startTimer();
@@ -250,12 +345,35 @@ public class TimeTrialActivity extends Activity implements Observer {
 
 		this.gameController.addOnePunchToPunchCounter();
 
-		if (this.animation.isRunning()) {
-			this.animation.stop();
-		} else {
-			this.animation.stop();
-			this.animation.start();
+		if (this.animation == null || !this.animation.isRunning()) {
+			this.RunLeftAnimation();
 		}
+
+
+	}
+	
+	/**
+	 * Handles the punch or punching bag click
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * Postcondition: none
+	 * 
+	 * @param view
+	 */
+	public void onRightPunchButtonOrPunchingBagClick(View view) {
+		Log.i(LOG_TAG, "onRightPunchButtonOrPunchingBagClick");
+
+		if (!this.gameController.isTimerStarted()) {
+			this.gameController.startTimer();
+		}
+
+		this.gameController.addOnePunchToPunchCounter();
+		
+		if (this.animation == null || !this.animation.isRunning()) {
+			this.RunRightAnimation();
+		}
+		
 
 	}
 

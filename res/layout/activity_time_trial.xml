@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="@string/punch_button" 
-            android:onClick="onPunchButtonOrPunchingBagClick"/>
+            android:onClick="onLeftPunchButtonOrPunchingBagClick"/>
         
         <Button
             android:id="@+id/punchRightButton"
@@ -82,7 +82,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="@string/punch_button" 
-            android:onClick="onPunchButtonOrPunchingBagClick"/>
+            android:onClick="onRightPunchButtonOrPunchingBagClick"/>
 
     </LinearLayout>
 
