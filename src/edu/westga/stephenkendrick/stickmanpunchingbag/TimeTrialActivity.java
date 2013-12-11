@@ -85,7 +85,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 	protected void onRestart() {
 		Log.i(LOG_TAG, "onRestart");
 		super.onRestart();
-		this.gameController.startTimer();
+		this.gameController.restartTimer(this.gameController.getTimerDurationRemaining());
 	}
 
 	@Override
