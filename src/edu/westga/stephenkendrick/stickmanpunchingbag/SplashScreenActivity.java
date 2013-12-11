@@ -36,6 +36,7 @@ public class SplashScreenActivity extends Activity {
             	
                 Intent i = new Intent(SplashScreenActivity.this, MainMenuActivity.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
  
                 // close this activity
                 finish();
