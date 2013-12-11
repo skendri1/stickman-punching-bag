@@ -24,15 +24,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TimeTrialActivity extends Activity implements Observer {
 
 	private static final String LOG_TAG = "TimerTrialActivity";
-
-	public static final String GAME_MODE_FREE = "FreeMode";
-	public static final String GAME_MODE_ALT = "ALT";
-	public static final String GAME_MODE_LEFT = "LEFT";
-	public static final String GAME_MODE_RIGHT = "RIGHT";
 	
 	private String punchMode;
 
@@ -96,13 +92,16 @@ public class TimeTrialActivity extends Activity implements Observer {
 	/**
 	 * Creates the game controller for the game
 	 */
-	public void createGameController() {
+	private void createGameController() {
 		Log.i(LOG_TAG, "createGameController");
 
-		this.punchMode = TimeTrialActivity.GAME_MODE_FREE;
+		Bundle intent = this.getIntent().getExtras();
+		
+		this.punchMode = intent.getString("punchMode");
 		
 		this.gameController = new TimeTrialGameController( this.timerTextView,
 				this.numberOfPunchesCounterTextView, this.punchMode);
+		
 		this.gameController.addObserver(this);
 	}
 
@@ -256,7 +255,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 			this.gameController.startTimer();
 		}
 
-		this.gameController.addOnePunchToPunchCounter();
+		this.gameController.punchLeft();
 
 		if (this.animation == null || !this.animation.isRunning()) {
 			this.RunLeftAnimation();
@@ -280,7 +279,7 @@ public class TimeTrialActivity extends Activity implements Observer {
 			this.gameController.startTimer();
 		}
 
-		this.gameController.addOnePunchToPunchCounter();
+		this.gameController.punchRight();
 
 		if (this.animation == null || !this.animation.isRunning()) {
 			this.RunRightAnimation();

@@ -1,5 +1,6 @@
 package edu.westga.stephenkendrick.stickmanpunchingbag;
 
+import edu.westga.stephenkendrick.stickmanpunchingbag.Controllers.TimeTrialGameController;
 import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivityThemeChanger;
 import edu.westga.stephenkendrick.stickmanpunchingbag.settings.SettingsActivity;
 import android.os.Bundle;
@@ -39,7 +40,7 @@ public class MainMenuActivity extends Activity {
 		this.theme = new MainMenuActivityThemeChanger(this);
 		this.loadPreferences();
 		
-		this.punchMode = TimeTrialActivity.GAME_MODE_FREE; // Free by default
+		this.punchMode = TimeTrialGameController.GAME_MODE_FREE; // Free by default
 
 	}
 
@@ -140,19 +141,19 @@ public class MainMenuActivity extends Activity {
 
 		if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioAlt))) {
 
-			this.punchMode = TimeTrialActivity.GAME_MODE_ALT;
+			this.punchMode = TimeTrialGameController.GAME_MODE_ALT;
 
 		} else if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioLeft))) {
 
-			this.punchMode = TimeTrialActivity.GAME_MODE_LEFT;
+			this.punchMode = TimeTrialGameController.GAME_MODE_LEFT;
 
 		} else if (radioButton.equals( modeDialog.findViewById(R.id.punchModeRadioRight))) {
 
-			this.punchMode = TimeTrialActivity.GAME_MODE_RIGHT;
+			this.punchMode = TimeTrialGameController.GAME_MODE_RIGHT;
 
 		} else {
 
-			this.punchMode = TimeTrialActivity.GAME_MODE_FREE;
+			this.punchMode = TimeTrialGameController.GAME_MODE_FREE;
 
 		}
 

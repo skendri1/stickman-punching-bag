@@ -21,6 +21,11 @@ public class TimeTrialGameController extends Observable{
 	
 	public static long DEFAULT_START_TIME = 30000;
 	
+	public static final String GAME_MODE_FREE = "FreeMode";
+	public static final String GAME_MODE_ALT = "ALT";
+	public static final String GAME_MODE_LEFT = "LEFT";
+	public static final String GAME_MODE_RIGHT = "RIGHT";
+	
 	private boolean isTimerRunning;
 	private GameTimer gameTimer;
 	private long msLeft;
@@ -32,6 +37,8 @@ public class TimeTrialGameController extends Observable{
 	private int numberOfPunches;
 	
 	private String punchMode;
+	
+	private String lastButtonPressed;
 	
 	
 	/**
@@ -263,6 +270,10 @@ public class TimeTrialGameController extends Observable{
 
 
 	/**
+	 * Returns the current punch mod
+	 * <p>
+	 * Precondition: none
+	 * 
 	 * @return the punchMode
 	 */
 	public String getPunchMode() {
@@ -270,6 +281,8 @@ public class TimeTrialGameController extends Observable{
 	}
 
 	/**
+	 * Sets the punch mode
+	 * 
 	 * @param punchMode the punchMode to set
 	 */
 	public void setPunchMode(String punchMode) {
@@ -303,6 +316,48 @@ public class TimeTrialGameController extends Observable{
 		}
 		
 		this.numberOfPunches = numberOfPunches;
+	}
+	
+	/**
+	 * Handles when the user punches right
+	 */
+	public void punchRight() {
+		Log.i(LOG_TAG, "punchRight");
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_LEFT)) {
+			return;
+		}
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_RIGHT) || this.punchMode.equalsIgnoreCase(GAME_MODE_FREE)) {
+			this.addOnePunchToPunchCounter();
+		}
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_ALT) && (this.lastButtonPressed == null || this.lastButtonPressed.equalsIgnoreCase(GAME_MODE_LEFT) ) ) {
+			this.addOnePunchToPunchCounter();
+		}
+		
+		this.lastButtonPressed = GAME_MODE_RIGHT;
+	}
+	
+	/**
+	 * Handles when the user punches left
+	 */
+	public void punchLeft() {
+		Log.i(LOG_TAG, "punchLeft");
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_RIGHT)) {
+			return;
+		}
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_LEFT) || this.punchMode.equalsIgnoreCase(GAME_MODE_FREE)) {
+			this.addOnePunchToPunchCounter();
+		}
+		
+		if(this.punchMode.equalsIgnoreCase(GAME_MODE_ALT) && (this.lastButtonPressed == null || this.lastButtonPressed.equalsIgnoreCase(GAME_MODE_RIGHT) ) ) {
+			this.addOnePunchToPunchCounter();
+		}
+		
+		this.lastButtonPressed = GAME_MODE_LEFT;
 	}
 	
 	/**
