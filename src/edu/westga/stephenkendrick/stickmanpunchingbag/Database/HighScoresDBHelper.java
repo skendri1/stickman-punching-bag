@@ -10,6 +10,8 @@ import android.util.Log;
 import edu.westga.stephenkendrick.stickmanpunchingbag.Database.HighScoresContract.HighScores;
 
 /**
+ * DB helper for connecting to the high scores database
+ * 
  * @author stephenkendrick
  *
  */

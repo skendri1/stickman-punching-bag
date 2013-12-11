@@ -24,8 +24,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+/**
+ * Handles the Time Trial Activity view (Main part of the game)
+ * 
+ * @author stephenkendrick
+ *
+ */
 public class TimeTrialActivity extends Activity implements Observer {
 
 	private static final String LOG_TAG = "TimerTrialActivity";
@@ -105,6 +110,9 @@ public class TimeTrialActivity extends Activity implements Observer {
 		this.gameController.addObserver(this);
 	}
 
+	/**
+	 * Sets the Theme of this activity
+	 */
 	private void setTheme() {
 		Log.i(LOG_TAG, "setTheme");
 

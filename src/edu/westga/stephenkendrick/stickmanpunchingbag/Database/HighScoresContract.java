@@ -6,6 +6,8 @@ package edu.westga.stephenkendrick.stickmanpunchingbag.Database;
 import android.provider.BaseColumns;
 
 /**
+ * High Scores Contract
+ * 
  * @author stephenkendrick
  *
  */

@@ -10,6 +10,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
+ * Handles the Time Trial Game actions and controls the game
+ * 
  * @author stephenkendrick
  *
  */
@@ -69,6 +71,8 @@ public class TimeTrialGameController extends Observable{
 		this.createTimer(DEFAULT_START_TIME);
 		
 	}
+	
+	//****************************** Timer Methods ***********************************
 	
 	/**
 	 * Creates the Timer 
@@ -150,6 +154,23 @@ public class TimeTrialGameController extends Observable{
 
 	}
 	
+	private void notifyForTimerFinished() {
+		setChanged();
+		notifyObservers();
+	}
+
+	/**
+	 * Returns true if the timer is running
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * @return true if the timer is running, false otherwise
+	 */
+	public boolean isTimerStarted() {
+		Log.i(LOG_TAG, "isTimerStarted");
+		return this.isTimerRunning;
+	}
+
 	/**
 	 * Inner class that will handle the game countdown timer
 	 * @author stephenkendrick
@@ -189,23 +210,8 @@ public class TimeTrialGameController extends Observable{
 		}
 	}
 	
-	private void notifyForTimerFinished() {
-		setChanged();
-		notifyObservers();
-	}
-
-	/**
-	 * Returns true if the timer is running
-	 * <p>
-	 * Precondition: none
-	 * 
-	 * @return true if the timer is running, false otherwise
-	 */
-	public boolean isTimerStarted() {
-		Log.i(LOG_TAG, "isTimerStarted");
-		return this.isTimerRunning;
-	}
-
+	//****************************** Getter and Setter Methods ***********************************
+	
 	/**
 	 * Returns the timer text view 
 	 * <p>

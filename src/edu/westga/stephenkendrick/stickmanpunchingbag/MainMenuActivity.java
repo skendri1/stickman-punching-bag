@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 /**
- * Main Menu Activity
+ * Main Menu Activity Class that handles the main menu actions
  * 
  * @author stephenkendrick
  */
@@ -56,6 +56,8 @@ public class MainMenuActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.i(LOG_TAG, "onOptionsItemSelected");
+		
 		switch (item.getItemId()) {
 		case 0:
 			startActivityForResult(new Intent(this, SettingsActivity.class), 0);
@@ -119,7 +121,6 @@ public class MainMenuActivity extends Activity {
 
 		builder.setView(inflater.inflate(R.layout.dialog_get_punch_mode, null));
 		
-		// Add action buttons
 		builder.setPositiveButton("OK", dialogClickListener);
 
 		builder.setCancelable(false);
@@ -198,6 +199,9 @@ public class MainMenuActivity extends Activity {
 
 	}
 
+	/**
+	 * This will be called any time an activity returns to this activity.
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		this.loadPreferences();

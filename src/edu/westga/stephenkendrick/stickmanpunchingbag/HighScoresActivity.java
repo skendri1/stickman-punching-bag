@@ -10,23 +10,20 @@ import edu.westga.stephenkendrick.stickmanpunchingbag.appearance.MainMenuActivit
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
-import android.app.ListActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 /**
+ * Class that handles the High Scores Activity of the Application
  * 
  * @author stephenkendrick
  * 
@@ -54,8 +51,6 @@ public class HighScoresActivity extends Activity implements
 	private void loadPreferences() {
 		Log.i(LOG_TAG, "loadPreferences");
 
-		Button mainMenuButton = null;
-
 		SharedPreferences preferences = PreferenceManager
 				.getDefaultSharedPreferences(this);
 		String themeString = preferences.getString("theme_scheme",
@@ -64,61 +59,84 @@ public class HighScoresActivity extends Activity implements
 		if (themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.PINK_THEME)) {
 
-			this.setTheme(R.style.pinkTheme);
-			this.setContentView(R.layout.activity_high_scores);
-			
-			View someView = findViewById(R.id.highScoresMainLayout);
-
-			View root = someView.getRootView();
-			
-			root.setBackgroundColor(getResources().getColor(android.R.color.white));
-			
-			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
-			
-			mainMenuButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
-
-			this.convertTextViewTextColor(Color.BLACK);
+			changeThemeToPink();
 
 		} else if (themeString
 				.equalsIgnoreCase(MainMenuActivityThemeChanger.LIGHT_THEME)) {
 
-			this.setTheme(R.style.lightTheme);
-			this.setContentView(R.layout.activity_high_scores);
-			
-			View someView = findViewById(R.id.highScoresMainLayout);
-
-			View root = someView.getRootView();
-			
-			root.setBackgroundColor(getResources().getColor(android.R.color.white));
-			
-			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
-			
-			mainMenuButton
-				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
-			
-
-			this.convertTextViewTextColor(Color.BLACK);
+			changeThemeToLight();
 
 		} else {
 
-			this.setTheme(R.style.darkTheme);
-			this.setContentView(R.layout.activity_high_scores);
-			
-			View someView = findViewById(R.id.highScoresMainLayout);
-
-			View root = someView.getRootView();
-			
-			root.setBackgroundColor(getResources().getColor(android.R.color.black));
-			
-			mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
-			
-			mainMenuButton
-					.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
-
-			this.convertTextViewTextColor(Color.WHITE);
+			changeThemeToDark();
 
 		}
+	}
+
+	private void changeThemeToDark() {
+		Log.i(LOG_TAG, "changeThemeToDark");
+		
+		Button mainMenuButton;
+		this.setTheme(R.style.darkTheme);
+		this.setContentView(R.layout.activity_high_scores);
+
+		View someView = findViewById(R.id.highScoresMainLayout);
+
+		View root = someView.getRootView();
+
+		root.setBackgroundColor(getResources().getColor(
+				android.R.color.black));
+
+		mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+
+		mainMenuButton
+				.setBackgroundResource(R.drawable.stickman_punchingbag_button_dark);
+
+		this.convertTextViewTextColor(Color.WHITE);
+	}
+
+	private void changeThemeToLight() {
+		Log.i(LOG_TAG, "changeThemToLight");
+		
+		Button mainMenuButton;
+		this.setTheme(R.style.lightTheme);
+		this.setContentView(R.layout.activity_high_scores);
+
+		View someView = findViewById(R.id.highScoresMainLayout);
+
+		View root = someView.getRootView();
+
+		root.setBackgroundColor(getResources().getColor(
+				android.R.color.white));
+
+		mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+
+		mainMenuButton
+				.setBackgroundResource(R.drawable.stickman_punchingbag_button_light);
+
+		this.convertTextViewTextColor(Color.BLACK);
+	}
+
+	private void changeThemeToPink() {
+		Log.i(LOG_TAG, "changeThemeToPink");
+		
+		Button mainMenuButton;
+		this.setTheme(R.style.pinkTheme);
+		this.setContentView(R.layout.activity_high_scores);
+
+		View someView = findViewById(R.id.highScoresMainLayout);
+
+		View root = someView.getRootView();
+
+		root.setBackgroundColor(getResources().getColor(
+				android.R.color.white));
+
+		mainMenuButton = (Button) findViewById(R.id.mainMenuButton);
+
+		mainMenuButton
+				.setBackgroundResource(R.drawable.stickman_punchingbag_button_pink);
+
+		this.convertTextViewTextColor(Color.BLACK);
 	}
 
 	private void convertTextViewTextColor(int color) {
@@ -193,104 +211,94 @@ public class HighScoresActivity extends Activity implements
 					.getColumnIndex(HighScores.NUMBER_OF_TAPS)));
 			cursor.moveToNext();
 		}
-		
+
 		this.addTextToNamesTextViews(names);
 		this.addTextToTapsTextViews(taps);
 
 		if (cursor != null) {
 			cursor.close();
 		}
-		
+
 		dbAdapter.close();
 
 	}
 
 	private void addTextToNamesTextViews(ArrayList<String> names) {
 		Log.i(LOG_TAG, "addTextToNamesTextViews");
-		
+
 		if (names == null || names.size() == 0) {
 			return;
 		}
 
 		TextView nameTextView = (TextView) findViewById(R.id.playerNameTextView1);
-		
+
 		if (names.get(0) != null) {
 			nameTextView.setText(names.get(0));
 		}
-		
+
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView2);
 
 		if (names.size() >= 2 && names.get(1) != null) {
 			nameTextView.setText(names.get(1));
 		}
-		
+
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView3);
 
 		if (names.size() >= 3 && names.get(2) != null) {
 			nameTextView.setText(names.get(2));
 		}
-		
+
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView4);
 
 		if (names.size() >= 4 && names.get(3) != null) {
 			nameTextView.setText(names.get(3));
 		}
-		
+
 		nameTextView = (TextView) findViewById(R.id.playerNameTextView5);
 
 		if (names.size() >= 5 && names.get(4) != null) {
 			nameTextView.setText(names.get(4));
 		}
-		
 
 	}
 
 	private void addTextToTapsTextViews(ArrayList<Integer> taps) {
 		Log.i(LOG_TAG, "addTextToTapsTextViews");
-		
+
 		if (taps == null || taps.size() == 0) {
 			return;
 		}
 
 		TextView tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView1);
-		
+
 		if (taps.get(0) != null) {
 			tapTextView.setText("" + taps.get(0));
 		}
-		
+
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView2);
 
 		if (taps.size() >= 2 && taps.get(1) != null) {
 			tapTextView.setText("" + taps.get(1));
 		}
-		
+
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView3);
 
 		if (taps.size() >= 3 && taps.get(2) != null) {
 			tapTextView.setText("" + taps.get(2));
 		}
-		
+
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView4);
 
 		if (taps.size() >= 4 && taps.get(3) != null) {
 			tapTextView.setText("" + taps.get(3));
 		}
-		
+
 		tapTextView = (TextView) findViewById(R.id.numberOfPunchesTextView5);
 
 		if (taps.size() >= 5 && taps.get(4) != null) {
 			tapTextView.setText("" + taps.get(4));
 		}
-		
-		
-	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i(LOG_TAG, "onCreateOptionsMenu");
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.high_scores, menu);
-		return true;
 	}
 
 	/**
@@ -302,24 +310,31 @@ public class HighScoresActivity extends Activity implements
 		Log.i(LOG_TAG, "onMainMenuButtonClick");
 		this.finish();
 	}
-	
+
+	/**
+	 * Handles the clear high scores button click
+	 * <p>
+	 * Precondition: none
+	 * 
+	 * @param view
+	 */
 	public void onClearButtonClick(View view) {
 		Log.i(LOG_TAG, "onClearButtonClick");
-		
+
 		boolean allScoresDeleted = false;
-		
+
 		HighScoresDBAdapter dbAdapter = new HighScoresDBAdapter(this);
 		try {
 			dbAdapter.open();
-			
+
 			allScoresDeleted = dbAdapter.deleteAllHighScores();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		dbAdapter.close();
-		
-		if(allScoresDeleted) {
+
+		if (allScoresDeleted) {
 			finish();
 		}
 	}

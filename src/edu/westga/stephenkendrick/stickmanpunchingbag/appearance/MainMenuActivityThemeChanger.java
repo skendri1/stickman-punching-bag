@@ -2,15 +2,16 @@ package edu.westga.stephenkendrick.stickmanpunchingbag.appearance;
 
 import edu.westga.stephenkendrick.stickmanpunchingbag.MainMenuActivity;
 import edu.westga.stephenkendrick.stickmanpunchingbag.R;
-import edu.westga.stephenkendrick.stickmanpunchingbag.R.drawable;
-import edu.westga.stephenkendrick.stickmanpunchingbag.R.id;
-import edu.westga.stephenkendrick.stickmanpunchingbag.R.layout;
-import edu.westga.stephenkendrick.stickmanpunchingbag.R.style;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+/**
+ * This class handles the main menu theme changing
+ * 
+ * @author stephenkendrick
+ *
+ */
 public class MainMenuActivityThemeChanger {
 	private static final String LOG_TAG = "MainMenuActivityThemeChanger";
 	

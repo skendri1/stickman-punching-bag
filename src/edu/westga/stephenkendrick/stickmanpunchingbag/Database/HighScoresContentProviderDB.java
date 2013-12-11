@@ -13,6 +13,12 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+/**
+ * Content Provider for the High Scores db
+ * 
+ * @author stephenkendrick
+ *
+ */
 public class HighScoresContentProviderDB extends ContentProvider{
 
 private static final String LOG_TAG = "HighScoresContentProviderDB";

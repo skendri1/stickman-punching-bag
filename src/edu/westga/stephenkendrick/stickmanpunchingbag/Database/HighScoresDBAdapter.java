@@ -10,6 +10,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+/**
+ * Database Adapter
+ * 
+ * @author stephenkendrick
+ *
+ */
 public class HighScoresDBAdapter {
 
 private static final String LOG_TAG = "HighScoresDBAdapter";
